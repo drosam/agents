@@ -1,13 +1,11 @@
 # Agents
 
-Shared agent skills and sub-agent definitions, used by both Pi and Claude Code.
+Shared agent skills and sub-agent definitions.
 
 ## Layout
 
 - `skills/` - [Agent Skills](https://agentskills.io/specification), one directory per skill with a `SKILL.md`.
 - `agents/` - sub-agent definitions (Markdown with frontmatter).
-
-Pi-specific skills and agents live in the `pi-config` repository instead.
 
 ## Install
 
@@ -19,9 +17,6 @@ stow -d ~/Developer -t ~/.agents agents
 ```
 
 `~/.agents/skills` stays a real directory so skills installed with `npx skills` live beside the linked ones without landing in this repository.
-
-- Pi discovers `~/.agents/skills` natively and reads `~/.agents/agents` through its subagent extension.
-- Claude Code gets per-item links in `~/.claude/skills` and `~/.claude/agents`, created by the installer.
 
 ## Upstream sources
 
