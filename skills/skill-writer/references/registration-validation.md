@@ -9,21 +9,19 @@ Apply repository registration and quality checks before completion.
 3. Update live symlinks only when the skill should be exposed to that runtime.
 4. Do not add README tables or provider settings unless this repository actually uses them for skill discovery.
 
-For this dotfiles repository today:
+For this setup today:
 
-- general skill sources live under `skills/dot-agents/skills/`
-- pi-specific skill sources live under `pi/dot-pi/agent/skills/`
-- live agent skills usually mirror general skills under `~/.agents/skills/`
-- live Claude skills usually mirror the subset exposed to Claude under `~/.claude/skills/`
-- live Pi skills usually mirror pi-specific skills under `~/.pi/agent/skills/`
-- symlink targets must point back to canonical repo paths, not to another live mirror
+- shared skill sources live in the `agents` repository under `skills/` (`~/Developer/agents/skills/`), linked into `~/.agents/skills/` by Stow
+- Pi-specific skill sources live in the `pi-config` repository under `skills/` (`~/Developer/pi-config/skills/`), linked into `~/.pi/agent/skills/` by Stow
+- Claude skills are per-skill links in `~/.claude/skills/` to `~/.agents/skills/<name>`, created by the dotfiles installer; Pi-specific skills are not exposed to Claude
+- create live links by re-running the dotfiles installer, not by hand
 
 ## Validation checklist
 
 1. Run:
 
 ```bash
-python3 skills/dot-agents/skills/skill-writer/scripts/quick_validate.py <path/to/skill-directory> --skill-class <chosen-class> --strict-depth
+python3 skills/skill-writer/scripts/quick_validate.py <path/to/skill-directory> --skill-class <chosen-class> --strict-depth
 ```
 
 Requires Python 3.12+ and the script's declared PyYAML dependency. Use an existing compatible environment; `uv run` may provision one only with install/network approval. If unavailable, report the validator blocked and distinguish any fallback structural checks from a strict-depth pass. Pass the chosen class explicitly: keyword-based auto inference can misclassify a review mentioning APIs as integration documentation.

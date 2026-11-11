@@ -49,4 +49,4 @@ Stop rationale: upstream current revision, a canonical splitting guide, the form
 
 ## Earlier history
 
-Previously `prd-to-todos` → `feature-spec-to-todos`; derived from mattpocock `to-tickets` (revision c55ee46) and sndrgrdn/pi `to-tickets` (54b2037) with local todo tool, identity, and approval contracts. See `skills/UPSTREAM.md`.
+Previously `prd-to-todos` → `feature-spec-to-todos`; derived from mattpocock `to-tickets` (revision c55ee46) and sndrgrdn/pi `to-tickets` (54b2037) with local todo tool, identity, and approval contracts. See the repository README's upstream sources table.
