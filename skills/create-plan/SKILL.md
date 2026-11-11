@@ -38,7 +38,7 @@ Each phase has a clear exit signal. Do not advance until the signal is clear. Ph
 
 Goal: understand existing code and constraints before writing a word of the doc.
 
-**Default: dispatch subagent (`explore` or `general`).** Main context is finite. Research burns through many files, extracts patterns, discards detail — subagent is the disposable scratch pad for that work. Main context then reads only the 2-5 load-bearing files the subagent flagged. Direct-reading 20 files in main context poisons every later turn with detail that should have been summarised away.
+**Default: dispatch a read-only exploration or general-purpose subagent.** Main context is finite. Research burns through many files, extracts patterns, discards detail — subagent is the disposable scratch pad for that work. Main context then reads only the 2-5 load-bearing files the subagent flagged. Direct-reading 20 files in main context poisons every later turn with detail that should have been summarised away.
 
 **Dispatch rule:**
 
@@ -61,7 +61,7 @@ If delegation is unavailable, denied, or fails, record the limitation and do bou
 - directories with similar design docs or conventions the new doc should fit
 - **contradictions**: places where the user's stated belief disagrees with the code
 
-*Web (when relevant — tell subagent to `WebSearch` / `WebFetch`):*
+*Web (when relevant — tell subagent to use available web search/fetch tools):*
 - official doc / changelog for gem or library the design hooks into (pin version from `Gemfile.lock` / `package-lock.json` — doc must match installed version)
 - GitHub issues / PRs on the upstream repo discussing the hook point or known gotcha
 - RFC, ADR, or spec when design touches a standard (OAuth, OIDC, JSON Schema, etc.)
@@ -249,7 +249,7 @@ For a confirmed existing spec, replace `Not created` with `[<Feature> spec](./sp
 
 ```
 user: Let's research how we can make app/tools have permissions.
-grug: [dispatch explore subagent: "map permission enforcement across
+grug: [dispatch exploration subagent: "map permission enforcement across
       app/policies, app/controllers, app/tools; cite file:line per claim;
       find 2+ existing DSL patterns; check Pundit changelog for version
       in Gemfile.lock re: new DSL hooks; flag contradictions with user

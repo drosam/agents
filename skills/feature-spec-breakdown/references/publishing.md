@@ -13,7 +13,7 @@ Read before creating todos or tracker issues. Only `accepted` tickets publish. C
 
 Use the todo tool actually exposed; do not assume tags, body fields, or persistence.
 
-Pi compatibility: when the API is `list`, `add(text)`, `toggle(id)`, `clear`, encode everything in `text`:
+Text-only todo API: when the API is `list`, `add(text)`, `toggle(id)`, `clear`, encode everything in `text`:
 
 ```text
 spec:<work-id> #NN <title>
