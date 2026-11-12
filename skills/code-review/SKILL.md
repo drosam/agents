@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Performs exhaustive, evidence-based code review of diffs, pull requests, patches, and AI-generated changes. Use when asked to review code, review a PR, find edge cases, check repo rules and best practices, verify relevant docs, compare recent deployed patterns, or perform a pre-merge audit, thermos, thermo review, thermonuclear review, or harsh code-quality audit. Also use for "for real", verifying a completed fix, or evidence before declaring work done; not for test-first implementation or initial bug diagnosis. Covers correctness, security, tests, maintainability, and rollout compatibility without assuming a later human review.
+description: Performs exhaustive, evidence-based code review of diffs, pull requests, patches, and AI-generated changes. Use when asked to review code, review a PR, find edge cases, check repo rules and best practices, verify relevant docs, compare recent deployed patterns, or perform a pre-merge audit, deep review, or harsh code-quality audit. Also use for "for real", verifying a completed fix, or evidence before declaring work done; not for test-first implementation or initial bug diagnosis. Covers correctness, security, tests, maintainability, and rollout compatibility without assuming a later human review.
 ---
 
 # Code Review
@@ -77,7 +77,7 @@ Before dispatch, read and follow `references/review-rounds.md`. It defines round
 
 Default full review: 2 independent rounds x 4 dimensions, plus 1 intent-blind worker and 1 whole-change simplicity worker. Run spec mapping, documentation/history collection, checks and final verification once. An explicit valid round count from 1 through 3 overrides the default; a quick full-dimension or explicitly narrowed review defaults to 1. Quick full-dimension reviews retain blind and simplicity; narrowed reviews omit them unless explicitly included. Invalid explicit counts require correction, not silent clamping. Print the selected rounds and worker count, then start without another confirmation.
 
-Thermo correctness and structural scrutiny remain part of the same four dimensions, not extra dimensions. Repeated rounds are independent samples: workers receive identical pinned inputs but never earlier findings. The simplicity worker separately challenges whole-change scope/approach and does not count as round agreement. Agreement can guide confidence and tie-breaking only; it is not evidence and never changes severity. A failed required sample, simplicity or blind pass remains unchecked and cannot become a clean result.
+Deep correctness and structural scrutiny remain part of the same four dimensions, not extra dimensions. Repeated rounds are independent samples: workers receive identical pinned inputs but never earlier findings. The simplicity worker separately challenges whole-change scope/approach and does not count as round agreement. Agreement can guide confidence and tie-breaking only; it is not evidence and never changes severity. A failed required sample, simplicity or blind pass remains unchecked and cannot become a clean result.
 
 ### Behavior and edge-case matrix
 

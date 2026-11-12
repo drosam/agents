@@ -52,7 +52,7 @@ Desk comparison only, not observed review runs or measured accuracy. Working cas
 | Transfer negative: similar query has narrower permissions/page limits; external caller reads result | Preserve separation and consumed API; missing caller evidence remains a gap | Unchanged safeguard |
 | Preservation: ordinary review, security-only request, failed worker, unavailable prior revision | Existing scope, all findings, safety, failure handling and readiness rules retained; no old checks sacrificed | Unchanged contract |
 
-Description remains verbatim in frontmatter: execution depth changes, not invocation. Should trigger: "review this PR", "audit code quality in this diff", "thermos review", "verify this completed fix". Should not trigger: "implement this feature", "deploy this branch", "explain this API", "debug this initial failure" without a review request. No classifier run or description change is needed by desk inspection.
+Description remains verbatim in frontmatter: execution depth changes, not invocation. Should trigger: "review this PR", "audit code quality in this diff", "harsh code-quality audit", "verify this completed fix". Should not trigger: "implement this feature", "deploy this branch", "explain this API", "debug this initial failure" without a review request. No classifier run or description change is needed by desk inspection.
 
 Profile coverage: existing vulnerability classes, exploit prerequisites, false-positive controls, severity and remediation remain; new safe reuse/idempotency/locking variants supplement them. Workflow preconditions, ordered dispatch, bounded permissions, output and failure handling remain; new code-quality/scenario/closure coverage requires concrete evidence or explicit gaps. API-depth rubric is inapplicable: this is neither an integration API guide nor a skill-authoring runtime.
 
@@ -90,7 +90,7 @@ Rejected remote behavior: destructive branch-local `--fresh` history, first-hit 
 
 Class: security-review + workflow-process. Shape: parallel workers with pinned shared input, a bounded return schema, merge rule and missing-dimension-worker fallback; one conditionally loaded rounds reference; one harness-specific isolated blind role. Selected synthesis profile: skill-writer `references/examples/workflow-process-skill.md`. Coverage: preconditions, ordered dispatch, permission boundaries, outputs, failure fallback, escalation/handoff and happy/robust/anti-pattern cases are represented in runtime guidance and `references/review-examples.md`. No script or dependency added.
 
-Description retained: round count is execution configuration, not a new invocation category. Should trigger remains code/PR/diff review, edge-case search, thermos audit and completed-fix verification. Should not trigger remains implementation, deployment, API explanation and initial diagnosis without a review request.
+Description retained: round count is execution configuration, not a new invocation category. Should trigger remains code/PR/diff review, edge-case search, harsh code-quality audit and completed-fix verification. Should not trigger remains implementation, deployment, API explanation and initial diagnosis without a review request.
 
 Qualitative desk evaluation only: normal review -> announces 2 rounds and 10 discovery workers; `rounds=1` full review -> 4 sampled workers plus blind and simplicity; invalid `rounds=4` -> correction request; repeated claim -> one verified finding with round attribution; one-round-only claim -> retained when supported; repeated unsupported claim -> dropped after verification; failed second sample -> fallback then unchecked/INCOMPLETE if still blocked; round 2 given round 1 findings -> contract violation; blind scope filters intent-document paths before launch; blind worker exposed to spec/PR rationale -> stops without findings and reports unchecked. Expected behavior is more explicit and potentially higher recall; no runtime benchmark establishes recall, precision, latency or token cost.
 
@@ -123,7 +123,7 @@ Desk comparison only; no observed agent run or measured recall improvement. Work
 | Transfer probe: background job duplicates a cache-repair obligation | Same owner/writer procedure applies without React or UI assumptions | Improved specificity |
 | Transfer probe: repeated permission guards at distinct trust boundaries | Preserve required validation; repetition alone does not establish removable duplication | Unchanged safeguard |
 
-Description retained verbatim: this changes review execution, not invocation. Should trigger: "review this PR", "audit this diff for maintainability", "thermos review", "verify this completed fix". Should not trigger: "implement this panel", "deploy this branch", "explain this hook", or initial incident diagnosis without a review request. Manual trigger inspection found no reason to broaden or narrow the existing description; no classifier benchmark run.
+Description retained verbatim: this changes review execution, not invocation. Should trigger: "review this PR", "audit this diff for maintainability", "deep review", "verify this completed fix". Should not trigger: "implement this panel", "deploy this branch", "explain this hook", or initial incident diagnosis without a review request. Manual trigger inspection found no reason to broaden or narrow the existing description; no classifier benchmark run.
 
 Validation:
 - `git diff --check -- skills/dot-agents/skills/code-review`: passed.
@@ -178,7 +178,7 @@ Deliberately reject former implicit repair authority: prior implementation appro
 
 Static calibration case added to `references/review-examples.md`: independently sourced expiry requirement contradicts code and passing tests; missing intent stays unverified; missing required browser checks prevent READY. Sources are user decisions, referenced specs and applicable established contracts - not inferred implementation intent. This is desk evaluation, not an executed product review or measured model benchmark.
 
-Retire the canonical `for-real` skill and its verified shared/Claude links. Validation results for this merge are recorded separately below; Thermos and earlier validation entries are historical, not proof of this change. Stop source collection here: the local contracts and explicit user decision suffice; external ancestry remains unknown.
+Retire the canonical `for-real` skill and its verified shared/Claude links. Validation results for this merge are recorded separately below; Specialist consolidation and earlier validation entries are historical, not proof of this change. Stop source collection here: the local contracts and explicit user decision suffice; external ancestry remains unknown.
 
 ### For Real merge validation
 
@@ -188,33 +188,39 @@ Retire the canonical `for-real` skill and its verified shared/Claude links. Vali
 - `python3 skills/dot-agents/skills/skill-writer/scripts/quick_validate.py skills/dot-agents/skills/code-review --skill-class security-review --strict-depth`: exit 1, `ModuleNotFoundError: No module named 'yaml'`. Nothing installed; strict validation remains blocked.
 - No spawned review or browser/product test executed. Static contract checks do not establish runtime adherence or completeness of future reviews.
 
-## Local Thermos consolidation
+## Specialist review consolidation
 
-User approved one `code-review` entry point with thermo checks always included in the existing four passes, not a separate opt-in mode or six-worker review. Keep both specialized Pi agents; dispatch them for security/data/rollout and rules/docs/patterns/code health, with general workers for the other two passes. Missing specialists use the same complete task packet through a general worker or permitted sequential review.
+User approved one `code-review` entry point with the former deep-audit checks always included in the existing four passes, not a separate opt-in mode or six-worker review. Keep both specialized Pi agents; dispatch them for security/data/rollout and rules/docs/patterns/code health, with general workers for the other two passes. Missing specialists use the same complete task packet through a general worker or permitted sequential review.
 
-Absorb explicit developer-setup/feature-gate checks and stronger ownership, invariant and structural-simplification scrutiny. Preserve code-review's evidence, validation, scope, severity and readiness contract where the former thermo contracts differ: no default `main`, bare clean-audit output, automatic high severity or line-count blocker. Workers do not orchestrate nested reviews. Explicitly requested narrower scopes remain supported and cannot grant full-change readiness.
+Absorb explicit developer-setup/feature-gate checks and stronger ownership, invariant and structural-simplification scrutiny. Preserve code-review's evidence, validation, scope, severity and readiness contract where the former audit contracts differ: no default `main`, bare clean-audit output, automatic high severity or line-count blocker. Workers do not orchestrate nested reviews. Explicitly requested narrower scopes remain supported and cannot grant full-change readiness.
 
-Inspected local sources: former `thermos/{SKILL.md,SOURCES.md}`, both Pi `thermo-nuclear-*/{SKILL.md,SOURCES.md}`, and both specialized agent definitions. Trust: canonical local; confidence high for instruction content, not empirical effectiveness. Remove the three redundant skill entry points and their verified live links. No new dependencies or skill references required.
+Inspected local sources: the three former separate audit skills (coordinator, correctness and code-quality) with their SOURCES.md files, and both specialized agent definitions. Trust: canonical local; confidence high for instruction content, not empirical effectiveness. Remove the three redundant skill entry points and their verified live links. No new dependencies or skill references required.
 
-Desk cases: ordinary review dispatches four tasks, not six; "thermos" selects the same workflow; specialist unavailable gets general/sequential fallback; worker cannot load skill uses supplied rubric or reports incomplete; security-only excludes other dimensions; a 1001-line file or `unknown` at a trust boundary alone is not a defect; no findings still requires coverage and verdict. These are static contract checks, not observed review runs.
+Desk cases: ordinary review dispatches four tasks, not six; a deep/harsh audit request selects the same workflow; specialist unavailable gets general/sequential fallback; worker cannot load skill uses supplied rubric or reports incomplete; security-only excludes other dimensions; a 1001-line file or `unknown` at a trust boundary alone is not a defect; no findings still requires coverage and verdict. These are static contract checks, not observed review runs.
 
 ### Local specialist agent names
 
-User approved responsibility-based names after consolidation. Files live under `pi/dot-pi/agent/agents/` from the repository root; their filename stems and frontmatter names match the current names below. The dispatch table in `SKILL.md` uses these names. Only names, titles and routing descriptions changed; review rubrics and safeguards remain unchanged. No legacy runtime aliases are retained.
+User approved responsibility-based names after consolidation. Files live under `pi/dot-pi/agent/agents/` from the repository root; their filename stems and frontmatter names match the current names below. The dispatch table in `SKILL.md` uses these names. The rename changed only names, titles and routing descriptions; the later rewrite below replaced the agent bodies. Former agent names are retired; no legacy runtime aliases are retained.
 
-| Current local name / filename stem | Former local name / filename stem | Assignment |
-| --- | --- | --- |
-| `code-review-security` | `thermo-nuclear-review-subagent` | Security/data/rollout; explicitly assigned correctness audits |
-| `code-review-code-health` | `thermo-nuclear-code-quality-review-subagent` | Rules/docs/patterns/code health |
+| Current local name / filename stem | Assignment |
+| --- | --- |
+| `code-review-security` | Security/data/rollout; explicitly assigned correctness audits |
+| `code-review-code-health` | Rules/docs/patterns/code health |
 
 Preserve current local names, dispatch references, full assigned-pass coverage and approval/evidence safeguards; do not restore old registrations automatically.
+
+### Specialist agent rewrite
+
+User-requested rewrite of `code-review-security` and `code-review-code-health` in original wording, with no loss of review power. Both now share the `code-review-behavior`/`code-review-tests` structure: selected-artifact work context instead of a default `.agent-work/` scan, coordinator-owned validation (matching `references/review-rounds.md`; the former "permitted safe checks" line conflicted with it), and `Problem:`/`Evidence:`/`Fix:`/`Check:` output instead of a one-line template.
+
+Every former fallback check is retained. Security fallback gains the shared rubric's threat map, auth/injection/session/privacy/supply-chain classes, migration and deployed-version coexistence, public-contract breaks, feature-gate off/on/mixed states and abuse-scenario evidence bar. Code-health fallback gains the previously missing scoped rules, documentation consistency and precedent checks, plus ownership map, predicate comparison, mode lifecycles, reuse search, producer/consumer traces and comment quality. Static desk comparison only; no runtime review benchmark.
 
 ### Consolidation validation
 
 - Dependency-free `python3 -c` structural check passed: four-pass routing, bundled reference existence, worker coverage/no-nesting contracts, canonical registration targets, removed directories/link, balanced fences and whitespace. This is not strict YAML/depth validation or a runtime review test.
 - `git diff --check -- skills/dot-agents/skills/code-review skills/UPSTREAM.md pi/dot-pi/agent/agents pi/dot-pi/agent/skills`: passed, no output. Ignored skill/agent file whitespace was also checked by Python.
 - `python3 skills/dot-agents/skills/skill-writer/scripts/quick_validate.py skills/dot-agents/skills/code-review --skill-class security-review --strict-depth`: exit 1, `ModuleNotFoundError: No module named 'yaml'`. No dependencies installed.
-- Live registration verified: shared code-review links point to the canonical source; Pi agents/skills use canonical parent-directory links. Removed three skill directories and the sole separate Thermos symlink; both specialist agent files remain.
+- Live registration verified: shared code-review links point to the canonical source; Pi agents/skills use canonical parent-directory links. Removed three skill directories and the sole separate coordinator symlink; both specialist agent files remain.
 - No application review or spawned-worker behavior evaluation performed. Future runtime adherence and strict validation remain open gaps.
 
 The research and validation sections below predate this consolidation unless explicitly labeled otherwise.
@@ -255,7 +261,7 @@ All GitHub paths below were read at the exact revision shown. These are pattern 
 | G | [Google review scope](https://google.github.io/eng-practices/review/reviewer/looking-for.html) and [standard](https://google.github.io/eng-practices/review/reviewer/standard.html) | canonical engineering guidance | High | Live pages, no immutable revision captured. Every-line/context, meaningful tests, code health and documented-rule precedence; adapt away from human-review handoff |
 | O | [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | canonical security guidance | High | Live page. Object-level authorization, per-request enforcement, framework/config verification, safe denial and privacy-aware logging; not a comprehensive language security reference |
 | D | [skills.sh leaderboard](https://skills.sh/) and candidate pages above | secondary discovery/metrics | Medium | Report displayed metrics only; badges/install counts are not a code audit or effectiveness benchmark |
-| L | Existing local SKILL.md/SOURCES.md, adjacent thermos workflow, skill-writer workflow and user requirements | canonical local | High | Existing safeguards and new user contract override upstream defaults. Skill-writer workflow/security example profiles selected |
+| L | Existing local SKILL.md/SOURCES.md, adjacent deep-audit workflow, skill-writer workflow and user requirements | canonical local | High | Existing safeguards and new user contract override upstream defaults. Skill-writer workflow/security example profiles selected |
 
 ## Decisions and rationale
 
