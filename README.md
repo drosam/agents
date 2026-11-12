@@ -9,7 +9,7 @@ Shared agent skills and sub-agent definitions.
 
 ## Workflow
 
-How the skills and agents chain together. Define is optional; simple work starts at Build. Every arrow crossing a gate needs explicit user approval. Rendered copy: [`docs/workflow.svg`](docs/workflow.svg). Artifact layout, spec/plan linking and session-start rules: [`docs/work-artifacts.md`](docs/work-artifacts.md).
+How the skills and agents chain together. Define is optional; simple work starts at Build. Every arrow crossing a gate needs explicit user approval. Artifact layout, spec/plan linking and session-start rules: [`docs/work-artifacts.md`](docs/work-artifacts.md).
 
 ```mermaid
 flowchart TD
