@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1300" viewBox="0 0 1200 1300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .lane { stroke: #cbd5e1; stroke-width: 1; }
+      .lane-label { font-size: 15px; font-weight: 700; fill: #0f172a; }
+      .box { fill: #ffffff; stroke: #475569; stroke-width: 1.5; }
+      .gate { fill: #fef3c7; stroke: #d97706; stroke-width: 1.5; }
+      .t { font-size: 14px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .s { font-size: 12px; fill: #475569; text-anchor: middle; }
+      .lbl { font-size: 12px; fill: #334155; font-style: italic; }
+      .edge { stroke: #334155; stroke-width: 1.5; fill: none; marker-end: url(#a); }
+      .both { marker-start: url(#a); }
+      .dash { stroke-dasharray: 6 4; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1300" fill="#ffffff"/>
+  <text x="30" y="45" font-size="22" font-weight="700" fill="#0f172a">Agent skills workflow</text>
+
+  <!-- Lanes -->
+  <rect class="lane" x="30" y="70" width="870" height="140" rx="10" fill="#f1f5f9"/>
+  <text class="lane-label" x="45" y="92">0 Session start</text>
+  <rect class="lane" x="30" y="250" width="870" height="170" rx="10" fill="#eff6ff"/>
+  <text class="lane-label" x="45" y="272">1 Define (optional, any order)</text>
+  <rect class="lane" x="30" y="520" width="870" height="130" rx="10" fill="#ecfdf5"/>
+  <text class="lane-label" x="45" y="542">2 Build</text>
+  <rect class="lane" x="30" y="690" width="870" height="160" rx="10" fill="#fdf4ff"/>
+  <text class="lane-label" x="45" y="712">3 Verify</text>
+  <rect class="lane" x="30" y="890" width="870" height="200" rx="10" fill="#fff7ed"/>
+  <text class="lane-label" x="45" y="912">4 Feedback</text>
+  <rect class="lane" x="30" y="1130" width="870" height="120" rx="10" fill="#f0fdfa"/>
+  <text class="lane-label" x="45" y="1152">5 Ship</text>
+  <rect class="lane" x="960" y="250" width="210" height="170" rx="10" fill="#f8fafc" stroke-dasharray="6 4"/>
+  <text class="lane-label" x="975" y="272">Side lane: meta</text>
+
+  <!-- 0 Session start -->
+  <rect class="box" x="90" y="110" width="220" height="70" rx="8"/>
+  <text class="t" x="200" y="140">Agent instructions</text>
+  <text class="s" x="200" y="160">permission policy</text>
+  <polygon class="gate" points="410,145 560,95 710,145 560,195"/>
+  <text class="t" x="560" y="132">Artifact gate</text>
+  <text class="s" x="560" y="150">user selects spec/plan?</text>
+  <text class="s" x="560" y="167">ask, never guess</text>
+
+  <!-- 1 Define -->
+  <rect class="box" x="50" y="290" width="180" height="100" rx="8"/>
+  <text class="t" x="140" y="312">grill-with-docs</text>
+  <text class="s" x="140" y="330">(grill me)</text>
+  <text class="s" x="140" y="348">work/&lt;id&gt;/notes.md</text>
+  <text class="s" x="140" y="364">context/CONTEXT.md</text>
+  <text class="s" x="140" y="380">decisions/NNNN.md</text>
+  <rect class="box" x="268" y="290" width="180" height="100" rx="8"/>
+  <text class="t" x="358" y="318">create-plan</text>
+  <text class="s" x="358" y="340">work/&lt;id&gt;/plan.md</text>
+  <rect class="box" x="486" y="290" width="180" height="100" rx="8"/>
+  <text class="t" x="576" y="318">to-feature-spec</text>
+  <text class="s" x="576" y="340">work/&lt;id&gt;/spec.md</text>
+  <rect class="box" x="704" y="290" width="180" height="100" rx="8"/>
+  <text class="t" x="794" y="318">feature-spec-breakdown</text>
+  <text class="s" x="794" y="340">tickets/NN-*.md</text>
+  <text class="s" x="794" y="358">optional todos / tracker</text>
+  <text class="lbl" x="467" y="410" text-anchor="middle">plan and spec link each other</text>
+
+  <!-- Approval banner -->
+  <rect class="gate" x="50" y="445" width="834" height="40" rx="20"/>
+  <text class="t" x="467" y="470">Gate: design approved != implementation approved</text>
+
+  <!-- 2 Build -->
+  <rect class="box" x="120" y="570" width="260" height="60" rx="8"/>
+  <text class="t" x="250" y="595">debug / prod-debug</text>
+  <text class="s" x="250" y="615">read-only diagnosis</text>
+  <rect class="box" x="500" y="570" width="260" height="60" rx="8"/>
+  <text class="t" x="630" y="595">tdd</text>
+  <text class="s" x="630" y="615">red-green-refactor</text>
+
+  <!-- 3 Verify -->
+  <rect class="box" x="50" y="740" width="170" height="50" rx="8"/>
+  <text class="t" x="135" y="770">code-review</text>
+  <rect class="box" x="250" y="725" width="230" height="85" rx="8"/>
+  <text class="t" x="365" y="748">review workers</text>
+  <text class="s" x="365" y="768">behavior, blind, code-health,</text>
+  <text class="s" x="365" y="786">security, simplicity, tests</text>
+  <rect class="box" x="510" y="725" width="170" height="85" rx="8"/>
+  <text class="t" x="595" y="752">simplify-code</text>
+  <text class="s" x="595" y="772">propose, then edit</text>
+  <text class="s" x="595" y="790">approved only</text>
+  <rect class="box" x="700" y="725" width="170" height="85" rx="8"/>
+  <text class="t" x="785" y="752">qa-review</text>
+  <text class="s" x="785" y="772">Playwright + Figma</text>
+
+  <!-- 4 Feedback -->
+  <rect class="box" x="50" y="940" width="340" height="130" rx="8"/>
+  <text class="t" x="220" y="965">Feedback sources</text>
+  <text class="s" x="220" y="987">code-review, simplify-code, qa-review</text>
+  <text class="s" x="220" y="1005">GitHub / GitLab / other PR/MR comments</text>
+  <text class="s" x="220" y="1023">human reviewers</text>
+  <text class="s" x="220" y="1041">pasted bug lists</text>
+  <rect class="box" x="440" y="965" width="220" height="80" rx="8"/>
+  <text class="t" x="550" y="993">review-triage</text>
+  <text class="s" x="550" y="1013">all incoming feedback</text>
+  <text class="s" x="550" y="1031">one item at a time</text>
+  <rect class="box" x="690" y="955" width="170" height="100" rx="8"/>
+  <text class="t" x="775" y="983">pr-review</text>
+  <text class="s" x="775" y="1003">outgoing review</text>
+  <text class="s" x="775" y="1023">publish only after</text>
+  <text class="s" x="775" y="1041">preview approved</text>
+
+  <!-- 5 Ship -->
+  <rect class="box" x="440" y="1160" width="220" height="70" rx="8"/>
+  <text class="t" x="550" y="1185">commit</text>
+  <text class="s" x="550" y="1205">focused commits</text>
+  <text class="s" x="550" y="1222">never stage .agent-work/</text>
+
+  <!-- Meta side lane -->
+  <rect class="box" x="980" y="290" width="170" height="50" rx="8"/>
+  <text class="t" x="1065" y="320">skill-writer</text>
+  <rect class="box" x="980" y="355" width="170" height="50" rx="8"/>
+  <text class="t" x="1065" y="385">find-skills</text>
+
+  <!-- Edges (drawn last so lanes never cover them) -->
+  <line class="edge" x1="310" y1="145" x2="408" y2="145"/>
+  <line class="edge" x1="560" y1="195" x2="560" y2="288"/>
+  <text class="lbl" x="570" y="232">new or selected work</text>
+  <path class="edge" d="M710,145 H930 V600 H762"/>
+  <text class="lbl" x="722" y="136">standalone task</text>
+  <line class="edge both" x1="232" y1="340" x2="266" y2="340"/>
+  <line class="edge both" x1="450" y1="340" x2="484" y2="340"/>
+  <line class="edge" x1="666" y1="340" x2="702" y2="340"/>
+  <line class="edge" x1="794" y1="390" x2="794" y2="443"/>
+  <line class="edge" x1="630" y1="485" x2="630" y2="568"/>
+  <line class="edge" x1="380" y1="600" x2="498" y2="600"/>
+  <line class="edge" x1="630" y1="630" x2="630" y2="688"/>
+  <line class="edge" x1="220" y1="765" x2="248" y2="765"/>
+  <line class="edge" x1="220" y1="850" x2="220" y2="938"/>
+  <text class="lbl" x="230" y="874">findings</text>
+  <line class="edge" x1="390" y1="1005" x2="438" y2="1005"/>
+  <line class="edge" x1="550" y1="1045" x2="550" y2="1158"/>
+  <text class="lbl" x="560" y="1112">Fix: one commit per fix</text>
+  <path class="edge" d="M880,850 V1195 H662"/>
+  <text class="lbl" x="770" y="1188" text-anchor="middle">clean</text>
+  <path class="edge dash" d="M440,1195 H14 V600 H60"/>
+  <text class="lbl" x="24" y="900" transform="rotate(-90 24 900)" text-anchor="middle">next ticket</text>
+
+  <!-- Legend -->
+  <text class="s" x="30" y="1282" text-anchor="start">Solid arrow: flow. Dashed arrow: loop. Amber: approval gate - crossing it needs explicit user approval.</text>
+</svg>
