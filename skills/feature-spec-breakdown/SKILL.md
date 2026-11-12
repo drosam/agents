@@ -48,6 +48,7 @@ Ask: too many / too few, merges, splits, order, blocker corrections. Iterate, up
 
 After agreement, write one file per ticket using `references/ticket-template.md`: `tickets/NN-<slug>.md`, numbered in agreed order, all `Status: draft`.
 
+- Write ticket prose with `writing-for-humans`; this section and the template win on structure and content.
 - Sections: Context, Description, Steps to reproduce (bugs only), Acceptance criteria. Complete and well described, but terse: no filler, no copied spec prose.
 - Write Description as short prose by default. Use a list only when distinct requirements or constraints are clearer when scanned separately; do not turn every sentence into a bullet.
 - Default to outcomes and constraints, not implementation. Omit proposed file changes, code symbols, component/class names, algorithms, schema/API shapes, and coding sequences.

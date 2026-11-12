@@ -60,6 +60,11 @@ flowchart TD
         meta["skill-writer, find-skills (external)"]
     end
 
+    voice["writing-for-humans<br/>voice for published text"]
+    prr -.-> voice
+    triage -.->|code-host replies| voice
+    breakdown -.->|ticket prose| voice
+
     gate -->|new or selected work| S1
     gate -->|standalone task| S2
     breakdown --> approve --> S2
@@ -124,6 +129,7 @@ Each skill's `SOURCES.md` records full provenance, decisions and validation. "Ba
 | review-triage | Local | [obra/superpowers](https://github.com/obra/superpowers/tree/5bf4e78011075bcfc0dc295f0724994cd123ee71) `receiving-code-review` |
 | simplify-code | Local ([grugbrain.dev](https://grugbrain.dev/) philosophy) | [getsentry/skills](https://github.com/getsentry/skills/tree/c2f99a5b04b4cd992ec3022d7c2c3e23e938d241) `code-simplifier`; [anthropics/claude-code](https://github.com/anthropics/claude-code/tree/d78be9481b889e11186ec4578b4f5e9301396e25); [mattpocock/skills](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7) |
 | to-feature-spec | [mattpocock/skills](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7) `to-spec` | - |
+| writing-for-humans | Local | [blader/humanizer](https://github.com/blader/humanizer/tree/b48c832f0f809c1b5658edbb838c2521b72f2413); [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop/tree/8da1f030185bdfe8471220585162991eaeb970e9); [zlliang/skills](https://github.com/zlliang/skills/tree/39f7d799a4c5a823cd24081e98d82d7c3dfdb83f) `writing-issues-and-prs`; Google eng-practices; Conventional Comments |
 
 When refreshing a skill from upstream, keep local contracts (approval gates, work-artifact identity, title-only commits) over upstream defaults.
 

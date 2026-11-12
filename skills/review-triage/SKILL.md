@@ -151,6 +151,7 @@ Batch editing requires explicit authority such as "fix all", "apply the obvious 
 
 Do this only after the user explicitly asks to reply, comment, or report the triage outcome on the code host (GitHub, GitLab or other). That request authorizes posting for the identified review/items; do not ask for a second confirmation unless the target, scope, or wording is materially ambiguous, or the user asks to preview drafts. It does not authorize pushing commits, resolving threads, dismissing reviews, approving, or merging.
 
+- Write replies with `writing-for-humans`; the reply rules below win where they differ.
 - Reply to an inline comment in its existing thread (GitHub review thread, GitLab discussion). For feedback that exists only in an overall review body, use a top-level PR/MR comment and quote only enough original text to identify each response. Do not create duplicate replies.
 - For a fixed item, default to exactly `Fixed in [\`<short-sha>\`](<commit-url>).` Add one short clause only when the commit link cannot answer necessary context. Do not say the suggestion was followed/applied and do not summarize the implementation by default.
 - For a skipped, deferred, already-resolved, or question-only item, write one brief direct sentence answering the reviewer or stating the evidence-backed reason it was not addressed. Avoid defensive narration and do not restate the full triage verdict.
