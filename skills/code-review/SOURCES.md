@@ -194,45 +194,24 @@ User approved one `code-review` entry point with thermo checks always included i
 
 Absorb explicit developer-setup/feature-gate checks and stronger ownership, invariant and structural-simplification scrutiny. Preserve code-review's evidence, validation, scope, severity and readiness contract where the former thermo contracts differ: no default `main`, bare clean-audit output, automatic high severity or line-count blocker. Workers do not orchestrate nested reviews. Explicitly requested narrower scopes remain supported and cannot grant full-change readiness.
 
-Inspected local sources: former `thermos/{SKILL.md,SOURCES.md}`, both Pi `thermo-nuclear-*/{SKILL.md,SOURCES.md}`, and both specialized agent definitions. Trust: canonical local; confidence high for instruction content, not empirical effectiveness. Remove the three redundant skill entry points and their verified live links; retain upstream consultation links below. No new dependencies or skill references required.
+Inspected local sources: former `thermos/{SKILL.md,SOURCES.md}`, both Pi `thermo-nuclear-*/{SKILL.md,SOURCES.md}`, and both specialized agent definitions. Trust: canonical local; confidence high for instruction content, not empirical effectiveness. Remove the three redundant skill entry points and their verified live links. No new dependencies or skill references required.
 
 Desk cases: ordinary review dispatches four tasks, not six; "thermos" selects the same workflow; specialist unavailable gets general/sequential fallback; worker cannot load skill uses supplied rubric or reports incomplete; security-only excludes other dimensions; a 1001-line file or `unknown` at a trust boundary alone is not a defect; no findings still requires coverage and verdict. These are static contract checks, not observed review runs.
 
-### Local specialist agent names - upstream mapping
+### Local specialist agent names
 
 User approved responsibility-based names after consolidation. Files live under `pi/dot-pi/agent/agents/` from the repository root; their filename stems and frontmatter names match the current names below. The dispatch table in `SKILL.md` uses these names. Only names, titles and routing descriptions changed; review rubrics and safeguards remain unchanged. No legacy runtime aliases are retained.
 
-| Current local name / filename stem | Original upstream name / filename stem | Assignment |
+| Current local name / filename stem | Former local name / filename stem | Assignment |
 | --- | --- | --- |
 | `code-review-security` | `thermo-nuclear-review-subagent` | Security/data/rollout; explicitly assigned correctness audits |
 | `code-review-code-health` | `thermo-nuclear-code-quality-review-subagent` | Rules/docs/patterns/code health |
 
-For future source updates, use the original worker URLs and removal history below to locate upstream content, then apply relevant changes to the mapped local files. Preserve current local names, dispatch references, full assigned-pass coverage and approval/evidence safeguards; do not overwrite local adaptations or restore old registrations automatically. This rename did not fetch or verify upstream content anew.
-
-### Original Thermos resources - retain for future updates
-
-Consult these upstream resources when updating the absorbed Thermos behavior. These exact historical URLs were recorded by the former `thermos/SOURCES.md`; they are provenance, not runtime dependencies. They are mutable and may now be missing. Do not claim a fresh fetch or immutable original-content pin from this consolidation.
-
-| Resource | Original upstream URL |
-| --- | --- |
-| Thermos coordinator | https://raw.githubusercontent.com/sndrgrdn/pi/master/skills/thermos/SKILL.md |
-| Correctness/security rubric | https://raw.githubusercontent.com/sndrgrdn/pi/master/skills/thermo-nuclear-review/SKILL.md |
-| Code-quality rubric | https://raw.githubusercontent.com/sndrgrdn/pi/master/skills/thermo-nuclear-code-quality-review/SKILL.md |
-| Correctness worker | https://raw.githubusercontent.com/sndrgrdn/pi/master/agents/thermo-nuclear-review-subagent.md |
-| Code-quality worker | https://raw.githubusercontent.com/sndrgrdn/pi/master/agents/thermo-nuclear-code-quality-review-subagent.md |
-
-Recorded upstream trust: secondary-external; historical source content/removal comparison previously recorded with high confidence. Exact original ancestry/content revision remains unpinned. To recover removed files, inspect the repository's history before the removal commit rather than assuming current URLs still contain them:
-
-- Repository: https://github.com/sndrgrdn/pi
-- Removal commit (`remove thermos skill + agents`): https://github.com/sndrgrdn/pi/commit/54b2037a480491d2a7e8eaebd854163e875edad5
-- Inspected replacement coordinator: https://github.com/sndrgrdn/pi/blob/54b2037a480491d2a7e8eaebd854163e875edad5/skills/deep-review/SKILL.md
-- Current replacement lookup: https://github.com/sndrgrdn/pi/blob/master/skills/deep-review/SKILL.md (mutable; verify on refresh).
-
-The earlier comparison inspected the replacement coordinator, not all its rubric leaves. Adopted pinned shared scope, independent evidence, counterevidence, root-cause/remedy deduplication and honest incomplete coverage. Do not automatically import upstream four-judge policies, tool assumptions, permission changes or mechanical blockers. Local four-pass behavior is this user's decision, not a claim of an upstream migration. Stop research here for this local merge; no new external claim needs retrieval.
+Preserve current local names, dispatch references, full assigned-pass coverage and approval/evidence safeguards; do not restore old registrations automatically.
 
 ### Consolidation validation
 
-- Dependency-free `python3 -c` structural check passed: four-pass routing, all five original upstream URLs, removal/replacement commit reference, bundled reference existence, worker coverage/no-nesting contracts, canonical registration targets, removed directories/link, balanced fences and whitespace. This is not strict YAML/depth validation or a runtime review test.
+- Dependency-free `python3 -c` structural check passed: four-pass routing, bundled reference existence, worker coverage/no-nesting contracts, canonical registration targets, removed directories/link, balanced fences and whitespace. This is not strict YAML/depth validation or a runtime review test.
 - `git diff --check -- skills/dot-agents/skills/code-review skills/UPSTREAM.md pi/dot-pi/agent/agents pi/dot-pi/agent/skills`: passed, no output. Ignored skill/agent file whitespace was also checked by Python.
 - `python3 skills/dot-agents/skills/skill-writer/scripts/quick_validate.py skills/dot-agents/skills/code-review --skill-class security-review --strict-depth`: exit 1, `ModuleNotFoundError: No module named 'yaml'`. No dependencies installed.
 - Live registration verified: shared code-review links point to the canonical source; Pi agents/skills use canonical parent-directory links. Removed three skill directories and the sole separate Thermos symlink; both specialist agent files remain.
@@ -363,7 +342,3 @@ Four inspected publishers plus Google/OWASP cover complementary orchestration, c
 - Run isolated behavior/trigger evaluations to measure adherence, precision, recall and cost; desk checks cannot establish effectiveness as the only review layer.
 - Retrieve application-specific locked-version docs, current deployment evidence and repo-required gate policy during actual reviews. This dotfiles update has no application deployment target.
 - Candidate install metrics for find-bugs and Anthropic plugins were not verified; verify them if installation is later considered.
-
-## Historical provenance
-
-The previous local synthesis recorded sndrgrdn/pi `skills/code-review/SKILL.md`, thermos and thermo agents. Earlier 2026-09-24 research inspected [revision 54b2037a480491d2a7e8eaebd854163e875edad5](https://github.com/sndrgrdn/pi/tree/54b2037a480491d2a7e8eaebd854163e875edad5/skills), where deep-review replaces removed thermos paths. That comparison contributed pinned shared input, root-cause/remedy deduplication and honest incomplete coverage. Those safeguards remain; the old lightweight/findings-only default is intentionally superseded by this user's new contract. No new historical-lineage claim made for the additional publishers.
