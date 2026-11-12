@@ -94,4 +94,4 @@ Static desk checks, not claims of observed agent behavior:
 - Review/breakdown -> consume chosen context, preserve parent docs and existing approval gates; publish only accepted tickets on explicit instruction.
 - Commit request -> `.agent-work/` globally excluded from ordinary adds; inspect the whole index for tracked or force-added artifacts.
 
-Strict skill validation uses `skills/skill-writer/scripts/quick_validate.py`; do not install its dependencies without approval. Runtime adherence needs separate model-session testing.
+Skill validation uses the externally installed `skill-writer` skill's checks; do not install its dependencies without approval. Runtime adherence needs separate model-session testing.

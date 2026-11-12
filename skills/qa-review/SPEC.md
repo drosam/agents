@@ -49,7 +49,7 @@ Use synthetic examples in `references/qa-examples.md` plus these desk checks; ru
 
 ## Validation and limitations
 
-- Validate frontmatter/name/portable paths with repository `quick_validate.py --skill-class workflow-process --strict-depth`; separately inspect reference links, source provenance, profile coverage, and trigger boundaries.
+- Validate frontmatter/name/portable paths with the installed `skill-writer` checks (workflow-process class); separately inspect reference links, source provenance, profile coverage, and trigger boundaries.
 - Qualitative comparison only by default; do not claim measured model improvement, exhaustive skill-market ranking, full accessibility compliance, pixel-perfect fidelity, or actual app execution from desk checks.
 - No project target or authorized app supplied during skill authoring. No real browser/PR QA, private ticket/Figma access, or fix-agent round trip is implied.
 - Skills steer agents; they do not technically sandbox browsers or guarantee compliance. Repository permissions and runtime evidence remain necessary.
