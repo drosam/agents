@@ -84,6 +84,22 @@ Validation: `git diff --check -- skills/dot-agents/skills/review-triage` passed.
 
 Retrieval stopped after the remote triage and walk contracts exposed their worth-it, option, decision and mutation semantics. More remote files would be low-yield because source capture, review discovery and fixing orchestration are outside this approved change.
 
+## Provider-neutral code-host feedback
+
+User-requested iteration: review-triage must handle all incoming feedback, including comments from GitHub, GitLab or other code hosts, not only GitHub. The repository workflow diagram routes every feedback source to this skill; the previous description, persistence snapshot and reply section named only GitHub.
+
+Behavior delta: description lists sources (local agent reviews, humans, GitHub, GitLab, other hosts) and PR/MR comments. Persistence uses PR/MR source branch, `human`/`github`/`gitlab`/other source values and excludes provider diff context for any host (GitHub `diff_hunk`, GitLab discussion diff/patch). Replies target GitHub review threads or GitLab discussions, use top-level PR/MR comments for overall-only feedback, and publish through `gh`/`glab` or the host's documented API; missing authenticated access is blocked, not guessed. Approval, evidence, commit and push gates unchanged. Shape remains inline; no reference, script, dependency or registration change.
+
+Static desk checks (expectations, not runtime agent runs):
+- "Triage the comments on this GitLab MR" -> review-triage, MR snapshot saved with source `gitlab` - improved routing.
+- "Reply on GitLab with the outcomes" -> discussion replies via `glab`, `Fixed in <linked-short-sha>.` - improved coverage, unchanged wording.
+- Bitbucket feedback without CLI/API access -> triage works; reply reported blocked - unchanged safety.
+- GitHub flows unchanged.
+
+Description changed to name sources and code hosts. Should trigger: "go through the GitLab MR comments", "triage this pasted bug list", "reply on the code host". Should not trigger: "review this new MR", "push my commits", "resolve all threads". Runtime adherence unmeasured.
+
+Validation: `git diff --check` passed. Strict-depth `quick_validate.py` blocked by `ModuleNotFoundError: No module named 'yaml'`; nothing installed.
+
 ## Concise GitHub replies after triage
 
 User-requested iteration from the named local session "PCO-5103 triage full review": after triage, the user may ask the agent to publish outcomes back to GitHub. The prior workflow correctly targeted inline comment threads, used a top-level PR comment for overall-review bullets, captured returned URLs, and logged publication. Its fixed-item replies were too verbose: phrases such as "applied your suggestion" and implementation summaries repeated what the commit already showed.
