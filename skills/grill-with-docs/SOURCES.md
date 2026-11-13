@@ -1,5 +1,9 @@
 # Grill With Docs Sources
 
+## Worktree-shared work area
+
+User-directed storage change: artifacts move from the repository's `.agent-work/` to `~/.agent-work/<repo-key>/`, shared by every worktree of the repository, because removing a worktree deleted its ignored artifacts and work was split across worktrees. `<repo-key>` comes from `git rev-parse --path-format=absolute --git-common-dir` (local, no remote required; bare `~/Developer/acme-shop` -> `acme-shop`); `<work-area>/.repo` guards key collisions. Rejected by the user: per-worktree symlinks, git-config keys and a prompt-injecting Pi extension. Canonical rule: `docs/work-artifacts.md`. Earlier `.agent-work/` paths below are historical.
+
 ## 2026-10-14 persistence iteration
 
 - Example intake: **positive fix**, human-verified. In a user-selected prior Pi session, the successful proposal used `.agent-work/work/<work-id>/notes.md` to preserve already-collected source links, research facts, conflicts, decisions, open questions, and the next round. The user explicitly selected this approach and requested it become mandatory skill behavior.

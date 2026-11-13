@@ -2,7 +2,7 @@
 
 ## Happy path
 
-Input: user selects `.agent-work/work/inventory-collection-filter/spec.md` (Work-ID `inventory-collection-filter`); its Plan link points to a reciprocal `./plan.md` with status Approved.
+Input: user selects `<work-area>/work/inventory-collection-filter/spec.md` (Work-ID `inventory-collection-filter`); its Plan link points to a reciprocal `./plan.md` with status Approved.
 
 1. Read spec, plan, glossary. Plan non-goal: "no saved filters".
 2. Outline in chat and `tickets/index.md` (`Breakdown: proposed`):

@@ -10,7 +10,7 @@ Research a problem space, produce a written design doc, walk the user through it
 
 ## Work artifacts and identity
 
-Use the target repo's `.agent-work/`: `work/<work-id>/plan.md` for designs, `work/<work-id>/spec.md` for requirements, shared `context/` for domain glossaries and `decisions/` for ADRs. Read the selected spec/plan and relevant glossary/ADRs before research; check scope, acceptance criteria, non-goals, status, and testing decisions. Conflicts require clarification.
+Use the repository's work area, shared by all worktrees: `<work-area>` = `~/.agent-work/<repo-key>/`, where `<repo-key>` is the name of the `git rev-parse --path-format=absolute --git-common-dir` directory, or its parent's name when that is `.git`/`.bare`, without a trailing `.git`. `<work-area>/.repo` records that directory: write it on first write; if it names another repository, stop and ask for a distinct key. Layout: `work/<work-id>/plan.md` for designs, `work/<work-id>/spec.md` for requirements, shared `context/` for domain glossaries and `decisions/` for ADRs. Read the selected spec/plan and relevant glossary/ADRs before research; check scope, acceptance criteria, non-goals, status, and testing decisions. Conflicts require clarification.
 
 An explicit user path, current-session confirmation, or validated reciprocal link from a selected document identifies existing work. Otherwise shortlist titles/statuses/summaries and ask with the question tool, including Other / None—new standalone work; ask even with one candidate. Never infer selection from names, matching slugs, branches, or recency. If asking is unavailable, stop and report the blocker. A clear request for a new standalone plan needs no existing-document selection. Do not force a spec into existence or auto-migrate legacy docs.
 
@@ -127,7 +127,7 @@ Exit signal: user replies with direction ("flesh out doc", "try approach B", "al
 
 ### Phase 3 — Design doc draft
 
-Goal: write a full doc to `.agent-work/work/<work-id>/plan.md` that someone unfamiliar with the conversation could read and understand.
+Goal: write a full doc to `<work-area>/work/<work-id>/plan.md` that someone unfamiliar with the conversation could read and understand.
 
 Inspect any existing destination before writing; ask before replacing existing work. Use the template below. Prose is appropriate here — this is generated content for an outside audience (team, future self). Drop the grug voice inside the doc, but keep it in the chat reply that delivers it.
 
@@ -171,7 +171,7 @@ Skip this check for pure refactor or pure config designs.
 
 ## Design doc template
 
-Write to `.agent-work/work/<work-id>/plan.md`. Sections in order:
+Write to `<work-area>/work/<work-id>/plan.md`. Sections in order:
 
 ```markdown
 # <Feature> — Design Doc
@@ -259,7 +259,7 @@ grug: [subagent returns findings pack, ~15 file:line refs + 2 pattern paths
 grug: [main context reads 3 load-bearing files to confirm hook shape]
 grug: [findings reply: bullets, file:line, rough map, recommendation, open question]
 user: flesh out design doc
-grug: [writes .agent-work/work/tools-permissions/plan.md; links confirmed spec if present]
+grug: [writes <work-area>/work/tools-permissions/plan.md; links confirmed spec if present]
 grug: doc at <path>. <3-line summary>. walk through step-by-step?
 user: yes
 grug: ## Step 1 — the problem
@@ -343,4 +343,4 @@ Wrong. Wait for explicit approval.
 
 ## Checklist
 
-Before declaring the design doc done: Phase 1 dispatched to subagent (or direct-read path justified against the dispatch rule); subagent returned structured findings pack with file:line per local claim and URL + takeaway per web claim; web research ran when design hooks into third-party library (or skip justified for purely-internal change); main context read ≤5 load-bearing files flagged by pack; research phase cited file:line for every hook point used; findings reply posted and user responded before doc was written; doc saved at `.agent-work/work/<work-id>/plan.md`; work identity confirmed and any spec links reciprocal; doc has Summary, Motivation, Non-goals, Background, Design, Alternatives, Open questions, Appendix; walkthrough ran one step per turn; every accepted refinement from walkthrough applied to doc; summary of refinements posted in chat; waiting for explicit implementation approval before coding.
+Before declaring the design doc done: Phase 1 dispatched to subagent (or direct-read path justified against the dispatch rule); subagent returned structured findings pack with file:line per local claim and URL + takeaway per web claim; web research ran when design hooks into third-party library (or skip justified for purely-internal change); main context read ≤5 load-bearing files flagged by pack; research phase cited file:line for every hook point used; findings reply posted and user responded before doc was written; doc saved at `<work-area>/work/<work-id>/plan.md`; work identity confirmed and any spec links reciprocal; doc has Summary, Motivation, Non-goals, Background, Design, Alternatives, Open questions, Appendix; walkthrough ran one step per turn; every accepted refinement from walkthrough applied to doc; summary of refinements posted in chat; waiting for explicit implementation approval before coding.

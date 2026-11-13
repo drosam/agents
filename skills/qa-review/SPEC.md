@@ -1,6 +1,6 @@
 # QA Review — Skill Contract
 
-Maintenance-only contract, not a feature spec under `.agent-work/`.
+Maintenance-only contract, not a feature spec under `~/.agent-work/<repo-key>/`.
 
 ## Intent and shape
 
@@ -16,7 +16,7 @@ Create a portable `workflow-process` skill for branch/PR functional **and visual
 ## Invariants
 
 1. Confirm target base/head/merge-base and runtime provenance; a dirty worktree or stale build cannot stand in for pristine PR head.
-2. Inspect `.agent-work/`; select by explicit path/current confirmation/validated reciprocal link, never branch/recency. Absent docs are allowed; durable review still requires confirmed Work-ID.
+2. Resolve and inspect the worktree-shared work area `~/.agent-work/<repo-key>/`; select by explicit path/current confirmation/validated reciprocal link, never branch/recency. Absent docs are allowed; durable review still requires confirmed Work-ID.
 3. Read relevant spec/plan status, acceptance/non-goals, glossary/ADRs, project testing guides, and linked ticket/design sources. Label unavailable sources and consequential conflicts, not inferred truth.
 4. Run functional and visual checks separately. Compare actual screenshots at matched viewport/state to Figma or applicable design-system/established UI evidence. No Figma does not remove style QA.
 5. Keep side-effect approval, local-only execution, fixture isolation, secret protection, and artifact/commit gates intact. Preserve old reports, Active triage, source and baselines.

@@ -1,5 +1,9 @@
 # QA Review — Sources and Evaluation
 
+## Worktree-shared work area
+
+User-directed storage change: artifacts move from the repository's `.agent-work/` to `~/.agent-work/<repo-key>/`, shared by every worktree of the repository, because removing a worktree deleted its ignored artifacts and work was split across worktrees. `<repo-key>` comes from `git rev-parse --path-format=absolute --git-common-dir` (local, no remote required; bare `~/Developer/acme-shop` -> `acme-shop`); `<work-area>/.repo` guards key collisions. Rejected by the user: per-worktree symlinks, git-config keys and a prompt-injecting Pi extension. Canonical rule: `docs/work-artifacts.md`. Earlier `.agent-work/` paths below are historical.
+
 Research date: 2026-10-02. New standalone skill; `.agent-work/` absent in dotfiles. User requested branch/PR QA using work context, Figma/tickets, project browser instructions and Playwright, with code-review-style fix-agent handoff; subsequently made visual/style checks explicit. Original synthesis, not a claimed upstream fork. No upstream scripts/templates installed or vendored; source concepts adapted into local wording/policy.
 
 ## Source inventory

@@ -17,7 +17,7 @@ Text-only todo API: when the API is `list`, `add(text)`, `toggle(id)`, `clear`, 
 
 ```text
 spec:<work-id> #NN <title>
-Ticket: .agent-work/work/<work-id>/tickets/NN-<slug>.md
+Ticket: <work-area>/work/<work-id>/tickets/NN-<slug>.md
 Blocked by: <returned todo ID> #NN | None
 ```
 
@@ -33,7 +33,7 @@ Ask for what is not already given:
 
 Use the tool the user names (MCP, CLI such as `gh`, or API) and inspect its actual parameters first. If no permitted tool exists, stop and hand over the ticket text for manual creation.
 
-Issue body: only the ticket's Context, Description, Steps to reproduce, and Acceptance criteria. Never publish or map the local `Status`, `Blocked by`, `Source`, or `Published` headers to Linear/Jira. Do not add spec, plan, or ADR citations. Never publish local `.agent-work/` paths.
+Issue body: only the ticket's Context, Description, Steps to reproduce, and Acceptance criteria. Never publish or map the local `Status`, `Blocked by`, `Source`, or `Published` headers to Linear/Jira. Do not add spec, plan, or ADR citations. Never publish local work-area paths.
 
 Resolve every body link or plain reference to another ticket as a Markdown hyperlink to that ticket's destination issue URL. If a target URL exists, replace the reference before creation. For forward references within the same publish batch, create the issues first, record all URLs, then update the affected bodies in the approved final pass. Completion requires no local ticket links, plain unresolved ticket references, or inaccessible placeholders in published bodies.
 

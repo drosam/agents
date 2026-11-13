@@ -28,9 +28,9 @@ _Avoid_: client, buyer, account
 
 ## Single vs multi-context
 
-- Default: `.agent-work/context/CONTEXT.md`, created lazily on the first resolved term.
-- Multiple contexts: `.agent-work/context/CONTEXT-MAP.md` links to `<context>/CONTEXT.md` beneath that same directory. Ask when the topic's context is unclear.
-- Read existing project glossaries/maps too, but do not write outside `.agent-work/` or copy/redefine conflicting terms without clarification.
+- Default: `<work-area>/context/CONTEXT.md`, created lazily on the first resolved term.
+- Multiple contexts: `<work-area>/context/CONTEXT-MAP.md` links to `<context>/CONTEXT.md` beneath that same directory. Ask when the topic's context is unclear.
+- Read existing project glossaries/maps too, but do not write outside `<work-area>` or copy/redefine conflicting terms without clarification.
 
 ```md
 # Context Map

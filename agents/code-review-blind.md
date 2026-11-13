@@ -18,7 +18,7 @@ Use only the coordinator-supplied:
 - safety, evidence, severity and output contract
 - Work-ID/status and selected document paths labeled `identity only - do not read`
 
-Do not inspect `.agent-work/`, selected document contents, specs, plans, tickets, PR descriptions or discussions, commit-message rationale, coordinator summaries, or another reviewer's findings. Treat work metadata only as cross-session identity; do not infer intent from its names. If withheld content appears in the supplied diff, output, or context, stop immediately without reviewing or returning findings; report `blind coverage unchecked: intent content exposed` so the coordinator can rerun a fresh worker with a path-filtered scope. Do not read the shared code-review skill because it contains intent-routing instructions; use the complete contract supplied in the task.
+Do not inspect the work area (`~/.agent-work/<repo-key>/`) or legacy `.agent-work/`, selected document contents, specs, plans, tickets, PR descriptions or discussions, commit-message rationale, coordinator summaries, or another reviewer's findings. Treat work metadata only as cross-session identity; do not infer intent from its names. If withheld content appears in the supplied diff, output, or context, stop immediately without reviewing or returning findings; report `blind coverage unchecked: intent content exposed` so the coordinator can rerun a fresh worker with a path-filtered scope. Do not read the shared code-review skill because it contains intent-routing instructions; use the complete contract supplied in the task.
 
 Missing or ambiguous pinned scope blocks the audit. Never substitute `main`, current mutable HEAD or a nearby branch.
 

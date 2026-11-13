@@ -1,6 +1,6 @@
 # ADR Format
 
-Save in `.agent-work/decisions/`, sequential `NNNN-slug.md`. Scan that directory for the highest number and increment; inspect the destination to avoid overwrites. Existing project ADRs elsewhere remain reference material; writing outside `.agent-work/` requires an explicit user request.
+Save in `<work-area>/decisions/`, sequential `NNNN-slug.md`. Scan that directory for the highest number and increment; inspect the destination to avoid overwrites. Existing project ADRs elsewhere remain reference material; writing outside `<work-area>` requires an explicit user request.
 
 ## Template
 
@@ -14,7 +14,7 @@ Save in `.agent-work/decisions/`, sequential `NNNN-slug.md`. Scan that directory
 {1-3 sentences: context, what was decided, and why.}
 ```
 
-From `.agent-work/decisions/`, confirmed work links use `[Spec](../work/<work-id>/spec.md)` and `[Plan](../work/<work-id>/plan.md)`. Use actual paths for user-approved multi-document layouts; do not link to absent artifacts.
+From `<work-area>/decisions/`, confirmed work links use `[Spec](../work/<work-id>/spec.md)` and `[Plan](../work/<work-id>/plan.md)`. Use actual paths for user-approved multi-document layouts; do not link to absent artifacts.
 
 A single decision paragraph plus the work header is a complete ADR. Optional sections, only when they add value:
 

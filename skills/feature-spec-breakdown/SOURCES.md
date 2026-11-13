@@ -1,5 +1,9 @@
 # Feature Spec Breakdown Sources
 
+## Worktree-shared work area
+
+User-directed storage change: artifacts move from the repository's `.agent-work/` to `~/.agent-work/<repo-key>/`, shared by every worktree of the repository, because removing a worktree deleted its ignored artifacts and work was split across worktrees. `<repo-key>` comes from `git rev-parse --path-format=absolute --git-common-dir` (local, no remote required; bare `~/Developer/acme-shop` -> `acme-shop`); `<work-area>/.repo` guards key collisions. Rejected by the user: per-worktree symlinks, git-config keys and a prompt-injecting Pi extension. Canonical rule: `docs/work-artifacts.md`. Earlier `.agent-work/` paths below are historical.
+
 ## 2026-10-08 — rename and file-backed tickets
 
 User-directed: `feature-spec-to-todos` → `feature-spec-breakdown`. Tickets are saved as files (context survives sessions); list and order are agreed first, then each full ticket is reviewed one per turn; todos remain available as an optional output, alongside tracker publication on explicit instruction (tracker-agnostic). Added plan gate and spec/plan coverage table (previous skill read the plan but never checked coverage or handled a missing plan), and Figma/image/link handling. User-specified ticket shape: Context, Description, Steps to reproduce (bugs), Acceptance criteria; terse but complete.

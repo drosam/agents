@@ -1,6 +1,6 @@
 # Ticket File Templates
 
-Paths are relative to the target repo's `.agent-work/work/<work-id>/`. Write straight to the point: every needed fact, no filler, no restating the spec.
+Paths are relative to `<work-area>/work/<work-id>/`. Write straight to the point: every needed fact, no filler, no restating the spec.
 
 ## `tickets/index.md`
 

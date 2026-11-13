@@ -1,5 +1,9 @@
 # Review Triage Sources and Decisions
 
+## Worktree-shared work area
+
+User-directed storage change: artifacts move from the repository's `.agent-work/` to `~/.agent-work/<repo-key>/`, shared by every worktree of the repository, because removing a worktree deleted its ignored artifacts and work was split across worktrees. `<repo-key>` comes from `git rev-parse --path-format=absolute --git-common-dir` (local, no remote required; bare `~/Developer/acme-shop` -> `acme-shop`); `<work-area>/.repo` guards key collisions. Rejected by the user: per-worktree symlinks, git-config keys and a prompt-injecting Pi extension. Canonical rule: `docs/work-artifacts.md`. Earlier `.agent-work/` paths below are historical.
+
 ## Outgoing-review routing boundary
 
 User approved a separate `pr-review` skill and confirmed this routing clarification. Description-only change: drafting outgoing feedback on someone else's PR uses pr-review, including when consuming an existing report. A body paragraph repeating this was dropped after review feedback flagged routing duplicated across five places; the SKILL body is unchanged from before pr-review existed. pr-review's `feedback.md` reuses this skill's `triage.md` log conventions by reference.
@@ -54,7 +58,7 @@ Validation: runtime screenshots after `/reload` confirmed the complete assessmen
 
 ## Rule applicability, review-induced churn and round attribution
 
-User-approved follow-up on 2026-10-22 after comparing local triage with private repository `booqable/local-spec-code-review` at pinned revision `c80707a4caeca397e31c2d9556385b27edd8dca8`. Reused the already inspected `plugins/local-spec-review/skills/run/references/triage.md` and `walk.md`; no additional retrieval. Trust/usage constraints remain secondary external pattern evidence only, high confidence for inspected pinned text, no effectiveness or lineage claim.
+User-approved follow-up on 2026-10-22 after comparing local triage with private repository `acme-co/local-spec-code-review` at pinned revision `c80707a4caeca397e31c2d9556385b27edd8dca8`. Reused the already inspected `plugins/local-spec-review/skills/run/references/triage.md` and `walk.md`; no additional retrieval. Trust/usage constraints remain secondary external pattern evidence only, high confidence for inspected pinned text, no effectiveness or lineage claim.
 
 Behavior delta: for the current item, verify the exact scope/version/precedence of any cited rule, convention, API contract or policy; a mis-citation invalidates only that rationale, while underlying behavior follows normal evidence rules. Detect code/defenses introduced by earlier review fixes and require concrete reachable harm or a broken contract before adding another defensive layer; material maintenance cost instead supports simplification/removal. Preserve `found by x/N rounds` when available but use it only to order otherwise equivalent verification leads within the current item, never to reduce verification scope/depth, break an evidence/verdict tie, confirm a claim, set severity or create a vote threshold.
 
@@ -68,7 +72,7 @@ Validation: targeted `git diff --check` passed. Three focused read-only code-hea
 
 ## Deterministic options and exact shaped decisions
 
-User-approved change on 2026-10-22 after comparing the local workflow with private repository `booqable/local-spec-code-review` at pinned revision `c80707a4caeca397e31c2d9556385b27edd8dca8`. Inspected remote files: `plugins/local-spec-review/skills/run/references/triage.md` and `walk.md`. Trust tier: secondary external implementation. Confidence: high for retrieved instructions at the pinned revision, not for effectiveness; the repository described itself as pre-alpha. Usage constraints: pattern evidence only, no source text copied, no license inferred and no shared-lineage claim.
+User-approved change on 2026-10-22 after comparing the local workflow with private repository `acme-co/local-spec-code-review` at pinned revision `c80707a4caeca397e31c2d9556385b27edd8dca8`. Inspected remote files: `plugins/local-spec-review/skills/run/references/triage.md` and `walk.md`. Trust tier: secondary external implementation. Confidence: high for retrieved instructions at the pinned revision, not for effectiveness; the repository described itself as pre-alpha. Usage constraints: pattern evidence only, no source text copied, no license inferred and no shared-lineage claim.
 
 Behavior delta: add second-order "what the fix invites" cost to the existing evidence/value assessment; persist 2-4 concrete current-item options before asking, recommendation first; append the canonical action plus exact decisive user message as a one-line JSON string; echo the finding number/title/action/modifier before mutation or advancement; carry modifiers unchanged into implementation and validation. Ambiguous input records/echoes Discuss, never a guessed action. Unverified findings offer exactly Defer and Discuss, both with the exact settling check. Preserve one-item-at-a-time investigation and never precompute later options.
 

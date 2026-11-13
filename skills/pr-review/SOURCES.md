@@ -6,7 +6,7 @@ User approved implementation of a separate outgoing-review skill after research 
 
 Class: workflow-process. Selected profile: skill-writer `references/examples/workflow-process-skill.md`. Shape: sequential coordinator using the existing discovery engine; two conditional references for fragile publication and calibration. No additional workers, script, dependency or copied upstream implementation. SPEC.md is a maintenance contract, not a work-artifact spec.
 
-Research observed 2026-11-04. Local reference: session `01a1a6cc-c62d-741d-8e22-68edac878bf2`, named `review https://github.com/booqable/booqable/pull/20205`, cwd `~/Developer/booqable/develop`. Read session messages and draft-writing tool arguments, not a fresh application review. The session narrowed 12 findings to 4 then 2, corrected a stale-record citation and security framing after reachability checks, and needed a separate shortening request. Historical assistant claims are outcome examples, not current application facts. Runtime calibration is synthetic/anonymized; no private code copied.
+Research observed 2026-11-04. Local reference: session `01a1a6cc-c62d-741d-8e22-68edac878bf2`, named `review <acme-co/acme-shop PR #20205 URL>`, cwd `~/Developer/acme-shop/develop`. Read session messages and draft-writing tool arguments, not a fresh application review. The session narrowed 12 findings to 4 then 2, corrected a stale-record citation and security framing after reachability checks, and needed a separate shortening request. Historical assistant claims are outcome examples, not current application facts. Runtime calibration is synthetic/anonymized; no private code copied.
 
 ## Source inventory
 

@@ -6,18 +6,18 @@
 - Finalize report
 - Index and verification
 
-Use the existing `code-review` / `review-triage` storage contract. Do not invent a parallel `qa-reviews/` hierarchy or require either skill to execute. All artifact paths below belong to the target project, not the installed skill.
+Use the existing `code-review` / `review-triage` storage contract. Do not invent a parallel `qa-reviews/` hierarchy or require either skill to execute. All artifact paths below belong to the target repository's `<work-area>` (`~/.agent-work/<repo-key>/`, resolved in `SKILL.md`), not the installed skill or current worktree.
 
 ## Identity and allocation
 
-1. Inspect `.agent-work/` and git status, including the whole index, before writing. If any `.agent-work/` path is staged, stop and ask; never silently unstage it. Respect no-write requests and ordinary tool permissions.
+1. Inspect `<work-area>` and git status, including the whole index, before writing. If any legacy in-repo `.agent-work/` path is staged, stop and ask; never silently unstage it. Respect no-write requests and ordinary tool permissions.
 2. Require a confirmed Work-ID and selected spec/plan paths or `Not created`. Work-ID must be a safe kebab-case directory segment. If no work exists, ask for a standalone Work-ID; create only its review storage, not a synthetic spec/plan.
-3. Resolve `.agent-work/work/<work-id>/reviews/<branch-key>/`. Use the exact checked-out branch for branch QA or verified PR head branch for PR QA. Replace `/` with `--` for the branch-key and preserve the exact branch in metadata. Verify repository and stored branch mapping. Detached/unknown branch, rename, collision, unsafe path characters, or conflicting mapping requires a user-confirmed unique series key. Keep every resolved path inside the confirmed work directory; never move established series automatically.
+3. Resolve `<work-area>/work/<work-id>/reviews/<branch-key>/`. Use the exact checked-out branch for branch QA or verified PR head branch for PR QA. Replace `/` with `--` for the branch-key and preserve the exact branch in metadata. Verify repository and stored branch mapping. Detached/unknown branch, rename, collision, unsafe path characters, or conflicting mapping requires a user-confirmed unique series key. Keep every resolved path inside the confirmed work directory; never move established series automatically.
 4. Allocate a new run directory `<review-id>/` using UTC `YYYYMMDDTHHMMSSZ-qa-<short-head>` (include PR number if useful). Append a numeric suffix on collision; never reuse/overwrite a prior run. Read the current branch index and previous-review pointer first.
 5. Place sanitized captures under that run's `evidence/` before finalizing. Keep incremental scenario notes in session context; if a durable draft is needed, label a separate `draft.md` as incomplete. Do not make a draft Latest or use immutable `review.md` as a scratchpad.
 
 ```text
-.agent-work/work/<work-id>/reviews/
+<work-area>/work/<work-id>/reviews/
   index.md
   <branch-key>/
     index.md

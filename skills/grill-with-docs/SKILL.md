@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs
-description: Stress-tests a plan, design, or decision through a dependency-aware repository interview. Persists compaction-safe working notes and records settled domain terms and approved ADRs under .agent-work/. Use when the user says "grill me", "grill me with docs", wants assumptions challenged or a grooming session, or wants to document a repo's domain language.
+description: Stress-tests a plan, design, or decision through a dependency-aware repository interview. Persists compaction-safe working notes and records settled domain terms and approved ADRs in the worktree-shared ~/.agent-work/<repo-key>/ work area. Use when the user says "grill me", "grill me with docs", wants assumptions challenged or a grooming session, or wants to document a repo's domain language.
 disable-model-invocation: true
 ---
 
@@ -10,12 +10,12 @@ Resolve user-owned design decisions through dependency-aware questions and codeb
 
 ## Work context
 
-Use the target repo's `.agent-work/`: `work/<work-id>/notes.md` for interview recovery, `work/<work-id>/spec.md` for requirements, `work/<work-id>/plan.md` for designs, shared `context/` for glossaries and `decisions/` for ADRs. Read selected spec/plan status, acceptance criteria, non-goals, design and testing decisions. Confirm Work-ID and reciprocal Spec/Plan links. An explicit user path, current-session confirmation, or validated reciprocal link establishes identity. Otherwise shortlist titles/statuses/summaries and ask via question tool, even for one candidate; offer Other / None—standalone discussion. Never choose by names, slugs, branch, or recency. If asking is unavailable, report the blocker. Clarify conflicts and missing links; do not pair or migrate documents automatically. A standalone discussion needs no spec/plan, but it still needs a user-confirmed Work-ID and recovery notes. Pass confirmed paths/constraints to research workers, who return missing-context questions instead of guessing.
+Use the repository's work area, shared by all worktrees: `<work-area>` = `~/.agent-work/<repo-key>/`, where `<repo-key>` is the name of the `git rev-parse --path-format=absolute --git-common-dir` directory, or its parent's name when that is `.git`/`.bare`, without a trailing `.git`. `<work-area>/.repo` records that directory: write it on first write; if it names another repository, stop and ask for a distinct key. Layout: `work/<work-id>/notes.md` for interview recovery, `work/<work-id>/spec.md` for requirements, `work/<work-id>/plan.md` for designs, shared `context/` for glossaries and `decisions/` for ADRs. Read selected spec/plan status, acceptance criteria, non-goals, design and testing decisions. Confirm Work-ID and reciprocal Spec/Plan links. An explicit user path, current-session confirmation, or validated reciprocal link establishes identity. Otherwise shortlist titles/statuses/summaries and ask via question tool, even for one candidate; offer Other / None—standalone discussion. Never choose by names, slugs, branch, or recency. If asking is unavailable, report the blocker. Clarify conflicts and missing links; do not pair or migrate documents automatically. A standalone discussion needs no spec/plan, but it still needs a user-confirmed Work-ID and recovery notes. Pass confirmed paths/constraints to research workers, who return missing-context questions instead of guessing.
 
 ## Recovery notes: mandatory preflight
 
 1. Resolve or ask for the Work-ID before the first substantive interview question. This identity question is the only permitted question before recovery notes exist; do not infer the ID.
-2. Read `references/notes-format.md`. Inspect `.agent-work/work/<work-id>/notes.md`; create it if absent or merge into it without erasing unrelated history.
+2. Read `references/notes-format.md`. Inspect `<work-area>/work/<work-id>/notes.md`; create it if absent or merge into it without erasing unrelated history.
 3. Before the interview starts, capture all relevant information already present in the active session: objective, scope, constraints, sources, verified findings, user-reported facts, settled decisions, contradictions, open questions, and the next frontier. Summarize; never copy secrets, customer data, full transcripts, or large raw outputs.
 4. If the notes write is denied or fails, stop before the interview and report the recovery blocker. Do not rely on conversation-only state.
 5. Update notes after every answered question round and every material research batch, before asking the next round. Perform a final sync before closing or handing off to spec, plan, or implementation work.
@@ -23,7 +23,7 @@ Use the target repo's `.agent-work/`: `work/<work-id>/notes.md` for interview re
 
 ## Interview
 
-1. Read the recovery notes, selected spec/plan, relevant code, `.agent-work/context/CONTEXT.md`, any `.agent-work/context/CONTEXT-MAP.md`, and `.agent-work/decisions/`. Also consult existing project glossaries/ADRs as evidence; do not modify or migrate those outside `.agent-work/` without an explicit request. Identify settled decisions, unresolved branches, factual unknowns, and terms already defined.
+1. Read the recovery notes, selected spec/plan, relevant code, `<work-area>/context/CONTEXT.md`, any `<work-area>/context/CONTEXT-MAP.md`, and `<work-area>/decisions/`. Also consult existing project glossaries/ADRs as evidence; do not modify or migrate those outside `<work-area>` without an explicit request. Identify settled decisions, unresolved branches, factual unknowns, and terms already defined.
 2. Ask one round of independent, currently answerable questions. Use the question tool when available; give concrete options and a recommended answer with its tradeoff.
 3. Do not ask a dependent question while its prerequisite is unresolved. Wait for answers before the next round.
 4. Facts are your job: discover them from the codebase with bounded exploration. Use a worker when useful and available; otherwise inspect directly. Decisions are the user's. Blocked tools are a blocked prerequisite, not permission to guess or retry endlessly.
@@ -41,12 +41,12 @@ Use the target repo's `.agent-work/`: `work/<work-id>/notes.md` for interview re
 
 | What resolved | Where it lands | When |
 | --- | --- | --- |
-| Current evidence, decisions, conflicts, open questions, and next frontier | `.agent-work/work/<work-id>/notes.md` (see [notes-format.md](references/notes-format.md)) | Before interviewing, after every round/research batch, and before handoff |
-| A project-specific term, settled by the user's answer | `.agent-work/context/CONTEXT.md` (see [context-format.md](references/context-format.md)) | Immediately, inline |
-| A decision that is hard to reverse **and** surprising without context **and** a real trade-off | `.agent-work/decisions/NNNN-slug.md` (see [adr-format.md](references/adr-format.md)) | Only after the user accepts the offer |
+| Current evidence, decisions, conflicts, open questions, and next frontier | `<work-area>/work/<work-id>/notes.md` (see [notes-format.md](references/notes-format.md)) | Before interviewing, after every round/research batch, and before handoff |
+| A project-specific term, settled by the user's answer | `<work-area>/context/CONTEXT.md` (see [context-format.md](references/context-format.md)) | Immediately, inline |
+| A decision that is hard to reverse **and** surprising without context **and** a real trade-off | `<work-area>/decisions/NNNN-slug.md` (see [adr-format.md](references/adr-format.md)) | Only after the user accepts the offer |
 
 - Recovery notes are a concise working ledger, not a draft spec, plan, transcript, or substitute glossary. Specs and plans remain `Not created` until an explicitly approved handoff creates them.
-- Except for mandatory recovery notes, create files lazily; inspect destinations before editing and preserve unrelated content. For multiple contexts, use `.agent-work/context/CONTEXT-MAP.md` and `.agent-work/context/<context>/CONTEXT.md`; ask which context when unclear. Existing maps outside this folder are evidence, not permission to write elsewhere. New artifacts stay inside `.agent-work/` unless the user explicitly requests otherwise.
+- Except for mandatory recovery notes, create files lazily; inspect destinations before editing and preserve unrelated content. For multiple contexts, use `<work-area>/context/CONTEXT-MAP.md` and `<work-area>/context/<context>/CONTEXT.md`; ask which context when unclear. Existing maps outside this folder are evidence, not permission to write elsewhere. New artifacts stay inside `<work-area>` unless the user explicitly requests otherwise.
 - In each ADR, include the confirmed Work-ID and relative Spec/Plan links, or `Not created` for absent artifacts. Do not invent a relationship. If an accepted decision changes a selected spec/plan, flag the affected sections and request approval to reconcile them; report the mismatch until resolved. No silent implementation handoff with conflicting requirements.
 - `CONTEXT.md` is a glossary only: no implementation details, spec prose, or scratch notes. Terms must be specific to this domain, not general programming concepts; working detail belongs in recovery notes.
 - Offer ADRs sparingly. Most sessions produce none; that is correct.

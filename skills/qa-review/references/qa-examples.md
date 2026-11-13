@@ -4,7 +4,7 @@ Synthetic desk-check transcripts, not executed tests or findings about this repo
 
 ## Happy path: PR acceptance plus visual defect
 
-User: “QA PR 42 using `.agent-work/work/search-filter/spec.md`; the local app is already running. Disposable test-role login is approved; don't change records.”
+User: “QA PR 42 using `~/.agent-work/shop/work/search-filter/spec.md`; the local app is already running. Disposable test-role login is approved; don't change records.”
 
 1. Resolve PR base/head and current worktree; verify local build matches. Validate selected spec Work-ID and reciprocal plan. Read project browser guide, linked ticket acceptance and Figma node.
 2. Map `R1` filter navigation and `R2` mandatory mobile layout to scenarios. Confirm fixture is read-only and interaction does not persist settings. Match the Figma mobile width/theme/content before comparison.

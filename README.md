@@ -15,7 +15,7 @@ How the skills and agents chain together. Define is optional; simple work starts
 flowchart TD
     subgraph S0["0 Session start"]
         rules["Agent instructions<br/>permission policy"]
-        gate{"Artifact gate<br/>user selects .agent-work spec/plan?<br/>ask, never guess"}
+        gate{"Artifact gate<br/>user selects ~/.agent-work spec/plan?<br/>ask, never guess"}
         rules --> gate
     end
 
@@ -53,7 +53,7 @@ flowchart TD
     end
 
     subgraph S5["5 Ship"]
-        commit["commit<br/>focused commits<br/>never stage .agent-work/"]
+        commit["commit<br/>focused commits<br/>never stage work artifacts"]
     end
 
     subgraph META["Side lane: meta"]

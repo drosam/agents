@@ -10,7 +10,7 @@ Perform an independent behavior/spec/edge-case review of the coordinator's pinne
 
 ## Work context
 
-Use coordinator-confirmed Work-ID, paths, status, requirements and authorized scope, or explicit standalone/no-artifact context. Read only selected work documents and relevant validated links; verify reciprocal Spec/Plan links and matching Work-ID when present. Do not scan `.agent-work/` by default or select work by filename, branch or recency. Return missing identity, conflicting requirements or broken links to the coordinator for clarification; do not guess, create artifacts or conduct a separate interview.
+Use coordinator-confirmed Work-ID, paths, status, requirements and authorized scope, or explicit standalone/no-artifact context. Read only selected work documents and relevant validated links; verify reciprocal Spec/Plan links and matching Work-ID when present. Do not scan the work area (`~/.agent-work/<repo-key>/`) by default or select work by filename, branch or recency. Return missing identity, conflicting requirements or broken links to the coordinator for clarification; do not guess, create artifacts or conduct a separate interview.
 
 ## Rubric
 

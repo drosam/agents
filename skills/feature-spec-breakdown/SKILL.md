@@ -10,7 +10,7 @@ Turn a spec (and plan) into reviewed ticket files that survive the session. File
 
 ## 1. Resolve context
 
-Work lives in the target repo's `.agent-work/`: `work/<work-id>/spec.md`, `work/<work-id>/plan.md`, shared `context/` glossaries and `decisions/` ADRs. Tickets go to `work/<work-id>/tickets/`.
+Work lives in the repository's work area, shared by all worktrees: `<work-area>` = `~/.agent-work/<repo-key>/`, where `<repo-key>` is the name of the `git rev-parse --path-format=absolute --git-common-dir` directory, or its parent's name when that is `.git`/`.bare`, without a trailing `.git`. `<work-area>/.repo` records that directory: write it on first write; if it names another repository, stop and ask for a distinct key. Layout: `work/<work-id>/spec.md`, `work/<work-id>/plan.md`, shared `context/` glossaries and `decisions/` ADRs. Tickets go to `work/<work-id>/tickets/`.
 
 - Identity: use an explicit user path, current-session confirmation, or the selected document's validated reciprocal Spec/Plan link and Work-ID. Otherwise shortlist candidates (path, title, status, scope) and ask with the question tool, even for one candidate; offer Other / None—standalone work. Never select by filename, slug, branch, or recency. If unable to ask, stop and report the blocker.
 - Read spec scope, stories, acceptance criteria, non-goals; plan design rules, components, testing decisions, open questions, affected files; relevant glossary terms and ADRs. Use glossary vocabulary in tickets.
@@ -80,7 +80,7 @@ Return: ticket directory, counts by status, dependency frontier (tickets ready t
 
 - Never edit the parent spec or plan; report needed changes instead.
 - Never implement, assign, start, or close work unless asked.
-- Never stage or commit `.agent-work/` files.
+- Never stage or commit work artifacts or legacy in-repo `.agent-work/` files.
 - Never publish to a tracker without an explicit destination and approval.
 
 For worked cases (happy path, missing plan, partial publish failure, horizontal-slice anti-pattern), read `references/examples.md`.

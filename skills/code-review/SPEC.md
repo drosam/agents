@@ -10,12 +10,12 @@ Default includes correctness, edge cases, security/privacy, data/rollout compati
 
 Inputs: pinned target/base/head or stable local-change inventory; optional explicit review-round count from 1 through 3; relevant requirements/rules/docs; callers/tests; recent history; deployment evidence when applicable; permitted validation tools/results.
 
-Outputs: all distinct actionable findings with trigger, evidence, impact, location, blocking status, fix direction and regression check; round/source attribution for sampled findings and independently verified whole-change simplicity proposals; coverage/evidence ledger; BLOCKED, INCOMPLETE or READY verdict; and a verified durable copy at `.agent-work/work/<work-id>/reviews/<branch-key>/<review-id>/review.md`. Work and branch indexes retain ordered history, latest-review metadata, and per-branch active-triage state. Unconfirmed hypotheses are gaps, not established findings.
+Outputs: all distinct actionable findings with trigger, evidence, impact, location, blocking status, fix direction and regression check; round/source attribution for sampled findings and independently verified whole-change simplicity proposals; coverage/evidence ledger; BLOCKED, INCOMPLETE or READY verdict; and a verified durable copy at `~/.agent-work/<repo-key>/work/<work-id>/reviews/<branch-key>/<review-id>/review.md`. Work and branch indexes retain ordered history, latest-review metadata, and per-branch active-triage state. Unconfirmed hypotheses are gaps, not established findings.
 
 ## Safety and evidence invariants
 
 - No application edits, comment publication, PR approval, merge, deploy, installs or permission bypass implied by review. The sole default write is the review artifact and its root/branch review indexes.
-- No worktree checkout/reset/stash for history inspection; unrelated WIP preserved. Review artifacts rely on the managed global Git excludes rule and are never staged, committed, or overwritten without explicit approval; already-staged `.agent-work/` content blocks artifact mutation pending clarification.
+- No worktree checkout/reset/stash for history inspection; unrelated WIP preserved. Review artifacts live in the worktree-shared work area outside Git and are never staged, committed, or overwritten without explicit approval; already-staged legacy in-repo `.agent-work/` content blocks artifact mutation pending clarification.
 - No production execution or private content in public research queries.
 - Every factual claim must be confirmed by inspected evidence; static reasoning is not misrepresented as a runtime reproduction.
 - Recent, merged, built, released and currently deployed are distinct states. Confirm environment/revision/current deployment evidence or label unverified.

@@ -1,6 +1,6 @@
 # Recovery Notes Format
 
-Use `.agent-work/work/<work-id>/notes.md` as the compact, current recovery ledger for one grill. Keep it useful after the conversation has been compacted away.
+Use `<work-area>/work/<work-id>/notes.md` as the compact, current recovery ledger for one grill. Keep it useful after the conversation has been compacted away.
 
 ```md
 # <Topic> — grill notes

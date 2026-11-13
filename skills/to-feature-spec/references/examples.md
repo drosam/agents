@@ -19,7 +19,7 @@ a different account cannot read or delete the saved search.
 Sharing searches between accounts.
 ```
 
-Save to `.agent-work/work/saved-searches/spec.md` and report it; do not create tracker issues. Header when no plan exists:
+Save to `<work-area>/work/saved-searches/spec.md` and report it; do not create tracker issues. Header when no plan exists:
 
 ```markdown
 **Work-ID:** saved-searches
@@ -28,7 +28,7 @@ Save to `.agent-work/work/saved-searches/spec.md` and report it; do not create t
 **Plan:** Not created
 ```
 
-Plan-first variant: the user confirms `.agent-work/work/search-management/plan.md` (Work-ID `search-management`) as the source. Create its counterpart at `.agent-work/work/search-management/spec.md`, reusing that Work-ID—not a new folder inferred from the feature title. Add `[Search management plan](./plan.md)` to the spec and `[Saved searches spec](./spec.md)` to the plan. Verify both targets and reciprocal links. Titles may differ; confirmation and links establish the relationship, not directory proximity.
+Plan-first variant: the user confirms `<work-area>/work/search-management/plan.md` (Work-ID `search-management`) as the source. Create its counterpart at `<work-area>/work/search-management/spec.md`, reusing that Work-ID—not a new folder inferred from the feature title. Add `[Search management plan](./plan.md)` to the spec and `[Saved searches spec](./spec.md)` to the plan. Verify both targets and reciprocal links. Titles may differ; confirmation and links establish the relationship, not directory proximity.
 
 ## Robust variant
 
@@ -44,6 +44,6 @@ Correct: cover agreed behavior and meaningful edge cases once; label unresolved 
 
 ## Cross-session identity and denied links
 
-Input: “Capture the spec for the current feature”; one plausible plan exists, but the user has not identified it. Ask: “Use `.agent-work/work/search-management/plan.md` (Draft, saved-search lifecycle), another document, or create a standalone spec?” Do not assume the branch name establishes identity.
+Input: “Capture the spec for the current feature”; one plausible plan exists, but the user has not identified it. Ask: “Use `<work-area>/work/search-management/plan.md` (Draft, saved-search lifecycle), another document, or create a standalone spec?” Do not assume the branch name establishes identity.
 
 After confirmation, a denied plan backlink edit means report `spec saved; pairing incomplete: plan backlink not updated`. Do not mark the pair complete or silently retry. A draft-only request writes neither document.
