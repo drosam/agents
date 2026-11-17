@@ -18,7 +18,7 @@ Confirm every factual claim before presenting it: current behavior, reachability
 - Investigate only the current item, gather enough evidence to explain it, present it, and wait for the user's decision. Do not inspect code, trace callers, run checks, or delegate investigations for later items in advance or in parallel. Shared code may be needed to understand the current item; that is not permission to triage later findings.
 - Start the next item's investigation only when both conditions hold: the current item is fixed/validated/committed, explicitly skipped, or explicitly deferred; and the user has explicitly continued past the completion stop in section 5 or clearly waived these stops for this triage session. Do not pre-investigate the queue before presenting the first item or while waiting for a decision or required continuation.
 - Include findings from an earlier assistant review when the user asks to walk through them. Do not launch triage merely because a discovery review just finished.
-- Keep decisions in the conversation and durable triage log: pending, fixed, skipped, deferred, or blocked. No tracker creation, remote replies, thread resolution, or pushes are implied by a triage decision. Choosing **Fix** also authorizes one focused local commit for that item's validated repair; no other decision authorizes git mutation. An explicit request to reply or comment on the code host separately authorizes only the requested publication scope; follow section 6.
+- Keep decisions in the conversation and durable triage log: pending, fixed, skipped, deferred, or blocked. No tracker creation, remote replies, thread resolution, or pushes are implied by a triage decision. Choosing **Fix** also authorizes one focused local commit for that item's validated repair; no other decision authorizes git mutation. An explicit request to reply or comment on the code host authorizes drafting only; posting additionally requires approval of the exact previewed replies (section 6).
 
 ### Persist or resume the review before investigation
 
@@ -149,13 +149,22 @@ Batch editing requires explicit authority such as "fix all", "apply the obvious 
 
 ## 6. Reply on the code host when requested
 
-Do this only after the user explicitly asks to reply, comment, or report the triage outcome on the code host (GitHub, GitLab or other). That request authorizes posting for the identified review/items; do not ask for a second confirmation unless the target, scope, or wording is materially ambiguous, or the user asks to preview drafts. It does not authorize pushing commits, resolving threads, dismissing reviews, approving, or merging.
+Do this only after the user explicitly asks to reply, comment, or report the triage outcome on the code host (GitHub, GitLab or other). That request authorizes drafting replies for the identified review/items, not posting them. Never post before the user approves the exact preview below, even when the original request said "reply" or "post". Nothing here authorizes pushing commits, resolving threads, dismissing reviews, approving, or merging.
+
+### Preview, approve, then post
+
+1. Draft every reply in scope first; post nothing while drafting.
+2. Append the numbered draft version to `triage.md` and re-read it.
+3. Show the complete exact payload as visible Markdown: draft version, PR/MR URL, and per reply the item `#N`, target (thread/discussion URL or `path:line`, or `top-level comment`), and exact reply text in a fenced block. Include linked commit SHAs and whether each is on the remote; flag any that needs a push.
+4. Ask with the question tool, `multiple: false`: **Post all as shown**, **Edit** (custom answer names changes), **Post subset** (custom answer names items), **Cancel**. Choosing an option or saying "looks good" to anything other than this exact preview is not approval.
+5. Any wording, target, scope, or commit change creates a new draft version: re-preview and re-ask. Changed remote state (new replies in a thread, resolved thread, new head) also invalidates approval.
+6. Log the exact approval input, then post only the approved version and items.
 
 - Write replies with `writing-for-humans`; the reply rules below win where they differ.
 - Reply to an inline comment in its existing thread (GitHub review thread, GitLab discussion). For feedback that exists only in an overall review body, use a top-level PR/MR comment and quote only enough original text to identify each response. Do not create duplicate replies.
 - For a fixed item, default to exactly `Fixed in [\`<short-sha>\`](<commit-url>).` Add one short clause only when the commit link cannot answer necessary context. Do not say the suggestion was followed/applied and do not summarize the implementation by default.
 - For a skipped, deferred, already-resolved, or question-only item, write one brief direct sentence answering the reviewer or stating the evidence-backed reason it was not addressed. Avoid defensive narration and do not restate the full triage verdict.
-- Verify the comment target, repository, commit SHA, and URL before posting. The linked commit must be available on that remote repository; if publication requires a push, stop and request separate push authorization.
+- Verify the comment target, repository, commit SHA, and URL before previewing and again before posting. The linked commit must be available on that remote repository; if publication requires a push, stop and request separate push authorization.
 - Prefer the host's official CLI (`gh` for GitHub, `glab` for GitLab), otherwise its documented API. If no authenticated CLI/API access is available, report blocked; do not guess endpoints. Capture each resulting comment URL, append the exact outcome to `triage.md`, re-read the append, and report only the posted/blocked count and URLs. A failed or ambiguous API response is blocked, not posted.
 
 ## Calibration examples
