@@ -31,7 +31,7 @@ Outputs: full immutable `review.md`; append-only `feedback.md` with stable IDs, 
 6. Comments use natural short sentences, normally 1-3, with necessary examples/details; no mandatory report labels, padded praise or repetition.
 7. UI, API and crafted-request reachability remain distinct; API-only serious defects are not discarded, and races are not called rare without evidence.
 8. Recommendation and selected APPROVE/REQUEST_CHANGES/COMMENT remain separate from technical readiness. User chooses; unverified checks do not automatically become blockers or a clean approval.
-9. Exact full preview precedes explicit publication. "Looks good" and selecting APPROVE alone post nothing. Changed base/head/text/event/relevant discussion invalidates publication approval.
+9. Exact full preview precedes explicit publication and is carried inside the authorization question itself, never only in narration or referenced as "above". "Looks good" and selecting APPROVE alone post nothing. Changed base/head/text/event/relevant discussion invalidates publication approval.
 10. Stable IDs and draft versions survive omissions, corrections, restarts and revision changes. Resume reconstructs state from complete source/log, not an index or summary.
 11. New runs add only feedback.md beyond what code-review itself writes. Existing files are not migrated; no spec/plan scaffold is required. feedback.md follows review-triage's triage.md log conventions.
 12. All decisions, modifiers, material corrections, approved text and publication results are recoverable in timestamp order. Failed appends are never called saved.

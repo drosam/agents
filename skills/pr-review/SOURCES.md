@@ -72,6 +72,7 @@ Before/after expectations from guidance inspection, not observed agent runs:
 | Complete one-line repair versus multi-file repair | Improved: optional complete suggestion versus concise direction, no local mutation |
 | Timeout after remote creation | Improved: reconcile exact remote review before retry; no duplicate comments |
 | Baseline exhaustive local audit/incoming Fix | Unchanged: code-review and review-triage bodies untouched |
+| Preview shown as narration, then "approve the payload above?" (2026-11-18 review-triage negative example: thinking-only entry, no visible text, user could not see the draft) | Improved: item and publication questions carry the complete draft/payload in their own prompt; never a pointer to narration. No runtime-specific field names or size thresholds in the skill |
 
 ## Validation results
 

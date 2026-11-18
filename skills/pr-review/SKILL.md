@@ -24,7 +24,7 @@ Investigate thoroughly, publish selectively. Flow: source review -> shortlist ->
 - Propose which findings to publish and which to omit, one short reason each, keeping stable IDs and source order. Recommendations are not decisions; no silent omission, merge or reorder.
 - Prioritize introduced/worsened defects with real impact, broken contracts and substantial maintenance cost. Recommend omitting taste, cleanup nits, feedback already in a thread, disproven claims and unrelated pre-existing problems. Do not filter by inherited P-labels, round votes or a comment quota.
 - Investigate only the current item; verify its trigger, impact and counterevidence independently of the report's conclusion. Keep impact, reachability (UI vs API vs crafted request) and unknown frequency separate; a race is not rare without evidence. If evidence is incomplete, name the settling check and offer Investigate or an explicitly uncertain question draft.
-- Ask with the question tool: assessment plus draft in the Markdown question, then Keep / Reword / Omit / Investigate as applicable, recommendation first, single-select. Keep means include this wording, not publish. Reword/Investigate keeps the item open.
+- Ask one self-contained interactive question: assessment plus draft in the question's Markdown prompt (never only in narration or reasoning, never referenced as "above"), then Keep / Reword / Omit / Investigate as applicable, recommendation first, single-select. Keep means include this wording, not publish. Reword/Investigate keeps the item open.
 - Log the decision, confirm briefly, pause for continuation before the next item unless the user explicitly waived stops for this session. Batch authority does not waive stops.
 
 Read `references/calibration.md` when importance, disputed reachability or wording needs calibration.
@@ -37,8 +37,8 @@ Write every draft with `writing-for-humans`; the rules here win where they diffe
 
 1. Recommend one event with a short reason, independent of the internal BLOCKED/INCOMPLETE/READY label: APPROVE (no unresolved blockers), REQUEST_CHANGES (verified material problems), COMMENT (useful feedback or uncertainty prevents approval). Missing runtime checks alone are not a defect.
 2. User chooses; log recommendation and choice separately. If the choice conflicts with known blockers, say so and clarify.
-3. Show the complete exact payload: body, inline comments with anchors, suggestion blocks, event, PR URL and head SHA, as a numbered draft version. Any wording change needs renewed acceptance.
-4. Ask for explicit publication authorization of that exact version. "Looks good", choosing APPROVE or the original review request is not authorization. Do not re-ask when authorization is explicit and unchanged.
+3. Build the complete exact payload: body, inline comments with anchors, suggestion blocks, event, PR URL and head SHA, as a numbered draft version. Any wording change needs renewed acceptance.
+4. Ask for explicit publication authorization of that exact version in one self-contained question whose prompt contains the complete payload, never a pointer to it. "Looks good", choosing APPROVE or the original review request is not authorization. Do not re-ask when authorization is explicit and unchanged.
 5. Before posting, read `references/github-publication.md`. Changed head, content, event or relevant discussion invalidates approval: re-preview and re-ask. Log the result with URLs; an ambiguous response is blocked, not posted, and logging failure blocks any retry until remote state is reconciled.
 
 Return short progress summaries with artifact paths; the full investigation stays in `review.md`.
