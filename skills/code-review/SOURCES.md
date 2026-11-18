@@ -352,3 +352,7 @@ Four inspected publishers plus Google/OWASP cover complementary orchestration, c
 - Run isolated behavior/trigger evaluations to measure adherence, precision, recall and cost; desk checks cannot establish effectiveness as the only review layer.
 - Retrieve application-specific locked-version docs, current deployment evidence and repo-required gate policy during actual reviews. This dotfiles update has no application deployment target.
 - Candidate install metrics for find-bugs and Anthropic plugins were not verified; verify them if installation is later considered.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

@@ -20,3 +20,7 @@ Adopt existing public test seams and domain/ADR vocabulary. Reject padded story 
 Coverage/profile: input, synthesis flow, safety, unknown decisions, output path and handoff covered. references/examples.md contains concrete happy-path, robust-existing-file, and anti-pattern correction. Should trigger for conversation-to-PRD, not a new requirements interview or issue publication.
 
 Stop: the current candidate and local contract reconcile useful changes. Gap: exact local ancestry inferred; retrieve original URL if required. Strict validator blocked by missing PyYAML; no runtime document-generation benchmark.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

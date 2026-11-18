@@ -53,3 +53,7 @@ Term conflict challenged before proceeding; "account" resolved to Customer writt
 - Dependency-free structural check: PASS (5 files, 39-line body, 352-char description, references resolve, no host paths, fences/whitespace).
 - `quick_validate.py --skill-class workflow-process --strict-depth`: exit 1, `ModuleNotFoundError: No module named 'yaml'`; not installed by policy.
 - Interview quality and inline-write behavior not exercised at runtime.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

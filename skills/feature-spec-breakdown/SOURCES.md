@@ -54,3 +54,7 @@ Stop rationale: upstream current revision, a canonical splitting guide, the form
 ## Earlier history
 
 Previously `prd-to-todos` → `feature-spec-to-todos`; derived from mattpocock `to-tickets` (revision c55ee46) with local todo tool, identity, and approval contracts. See the repository README's upstream sources table.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

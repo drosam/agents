@@ -16,3 +16,7 @@ Decision: strengthen scope/index checks, distinguish drafting from committing, a
 Coverage/profile: workflow-process preconditions, ordered flow, safety, check results, failure recovery and handoff covered. Desk checks: draft-message request never commits; unrelated staged hunk blocks commit; failed hook prompts inspection, not bypass. Negative trigger: plain code explanation.
 
 Stop: local policy plus current candidate covers relevant changes. Gap: exact original source unknown; obtain owner-provided URL if needed. Strict validator blocked by missing PyYAML; no runtime commit performed.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

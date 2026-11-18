@@ -16,3 +16,7 @@ Adopt exact-symptom feedback, ranked falsifiable hypotheses, minimal discriminat
 Coverage/profile: preconditions, ordered investigation, no-safe-repro recovery, output/evidence and one-shot approval handoff covered. Desk check: local failure → bounded read-only observations; “fix it” → no mutation; explicit targeted local Rails change → one attempt then read-only verification; unsafe runner → ask, not run; no repro → hypothesis labeled. Negative trigger: production command execution.
 
 Stop: relevant diagnostic pattern and local restrictions reconcile the change. Gap: original source unknown; retrieve owner-provided provenance if needed. Strict validator blocked by missing PyYAML; no application runtime executed.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

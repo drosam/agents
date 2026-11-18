@@ -20,3 +20,7 @@ Decision: narrow unsolicited activation, permit bounded direct reads on denied d
 Coverage/profile: workflow preconditions, phases, fallback, safety and handoff covered; inline template and good/bad interaction examples retained. Desk checks: research request → findings before file; review complete → no code; blocked worker → direct reads or explicit gap. Negative trigger: already-approved small fix.
 
 Stop: local process is authoritative; generic planning searches would not establish lineage. Gap: exact original unrecorded; ask owner for URL before claiming upstream synchronization. Strict validator blocked by missing PyYAML; no behavioral benchmark.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

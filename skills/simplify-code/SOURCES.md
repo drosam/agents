@@ -112,3 +112,7 @@ User approved canonical-source live links in `~/.agents/skills/simplify-code` an
 - Run strict workflow-process validation when a compatible environment with PyYAML is available; structural fallback is not a strict pass.
 - Interactive discovery and runtime instruction-following are not yet exercised; filesystem link targets are verified.
 - No real branch was simplified during skill authoring; examples are synthetic, and application correctness remains target-specific.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".

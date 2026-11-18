@@ -16,3 +16,7 @@ Decision: preserve assistant execution only for approved read-only production to
 Coverage/profile: workflow context, observation flow, permission safety, clipboard failure, result handoff covered. Desk cases: pasted incident log → local analysis; generic “fix it” → no mutation payload; explicit targeted Rails repair request → one handoff then read-only; unavailable clipboard → fenced payload once, no false copied claim. Code approval never becomes production mutation approval.
 
 Stop: local safety contract and bounded diagnostic pattern cover relevant deltas. Gap: original upstream unrecorded; request original URL if needed. Strict validator blocked by missing PyYAML; no production actions tested.
+
+## Runtime-neutral question wording (2026-11-18)
+
+User-approved wording change: replaced "question tool" with "ask the user interactively" / "interactive question" so the skill does not depend on one agent runtime's tool name. Behavior unchanged: still ask even for one candidate, and report a blocker when asking is unavailable. Related review-triage iteration: thinking-only tool calls hid content the agent called "shown above".
