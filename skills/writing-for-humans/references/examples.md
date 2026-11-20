@@ -4,6 +4,7 @@ Synthetic before/after pairs. Each "Good" keeps every fact from "Bad" that the r
 
 ## Contents
 
+- Review batch with summary body
 - PR/MR description
 - Bug report
 - Ticket with acceptance criteria
@@ -14,6 +15,38 @@ Synthetic before/after pairs. Each "Good" keeps every fact from "Bad" that the r
 - Secrets and customer data
 - Anti-pattern: shortened by dropping facts
 - Anti-pattern: robot shorthand
+
+## Review batch with summary body
+
+Adapted from real agent drafts that were correct but read as robotic; identifiers changed.
+
+Bad:
+
+> Body: Looks good. The inline notes are all non-blocking.
+>
+> 1. non-blocking: the reports page used to sort labels case-insensitively, but `LabelFilter` uses a plain `sortBy`, so `Zebra` now shows before `apple` here. If the old order matters, sorting by `name.toLowerCase()` in `LabelFilter` would fix it, though that also reorders the other screens.
+> 2. non-blocking: clearing the last label now sends `labels: undefined` instead of `[]`, and `handleFilter` drops undefined keys before tracking, so "Filtered orders" no longer fires for it. Probably fine, but worth a quick check if anyone relies on that event.
+> 3. Until the projects load, every saved pick shows as "Deleted project", since `projects` starts as `[]`. If the request fails, `.catch(() => [])` makes that stick, so someone could remove picks that still exist. Could we only label ids as deleted after a successful load, like `ProductConditionForm` does with `savedLoaded`? Not blocking.
+> 4. Small one: this line still says thirty-five condition types and "covers all thirty-five", and the list doesn't include Projects. Should be thirty-six, with Projects after Products.
+
+Good:
+
+> Body: Looks good! A few small things below, feel free to skip any you disagree with.
+>
+> 1. Should labels still ignore case here? `Zebra` now sorts before `apple` because `LabelFilter` uses a plain `sortBy`. Sorting by `name.toLowerCase()` there would change the other screens too.
+> 2. Clearing the last label no longer fires "Filtered orders", since it now sends `undefined` and `handleFilter` skips undefined keys. Does anything depend on that event?
+> 3. Saved picks show as "Deleted project" until the list loads, and stay that way if the request fails (`.catch(() => [])`), so someone could remove picks that still exist. Could we wait for a successful load, like `ProductConditionForm` does with `savedLoaded`?
+> 4. This still says thirty-five condition types, and the list is missing Projects (after Products). Should be thirty-six now.
+
+What changed: the body sets the weight once, so no comment repeats it; comments open differently (question, observation, plain correction); each keeps its trigger, visible effect and fix hint; hedge tails and caveat clauses are gone.
+
+Other summary bodies that read as human:
+
+> Looks good to me, just some nits.
+
+> One real issue on the retry loop, the rest are small.
+
+> Couple of questions before I approve.
 
 ## PR/MR description
 

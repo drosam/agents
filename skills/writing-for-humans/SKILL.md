@@ -44,10 +44,18 @@ Ceiling: it fits on one screen, unless the content is itself a log, table or lis
 
 - Plain words and contractions (`it's`, `don't`, `I'd`). Talk about the code or the change, not the person.
 - State what you know; ask when you are unsure. One hedge at most per claim.
-- Mark weight when it matters: `nit:`, `optional:`, `non-blocking:`, `blocking:`. Use the team's label convention if it has one; do not introduce a new one.
+- Say weight once, where it is cheapest. In a review, the summary body sets it ("Looks good, just a few small things"); then unlabeled comments read as suggestions. Label a comment only when it differs from that default or could be misread: `blocking:` for must-fix, `nit:` for trivia, a plain question for intent. Never a leading label and a trailing "Not blocking." on the same comment. Follow the team's convention if it has one.
 - Match the thread's language, register and formatting. When recent comments from the same team are available, mirror their length and tone.
 - Thanks or praise only when genuine and specific, once, briefly.
 - Disagree calmly: the fact, the consequence, the proposal. No defensiveness, no apology chains.
+
+## Sound like a teammate
+
+- One idea per comment. Split unrelated points; group only same-cause repeats.
+- Give the trigger and what the user or caller sees. Leave the full mechanism out unless the reader needs it to agree; they can ask.
+- Ask when intent is unclear ("Is this meant to...?", "What about...?"). Prefer "we" or the code as subject over "you".
+- Vary the shape across a batch. Not every comment needs problem, consequence, "Could we...?" and a caveat; a question or a one-line `old -> new` correction is often enough.
+- Casual is fine when the thread is casual: "Small one:", "Hmm,", "Looks good!". Keep it brief and genuine.
 
 ## Cut list
 
@@ -66,6 +74,12 @@ Ceiling: it fits on one screen, unless the content is itself a log, table or lis
 | Dashes everywhere | em or en dashes joining clauses | Comma, period or parentheses, unless the user's own writing uses them |
 | Summary closer | "Overall, this change improves...", "In summary" | Delete |
 | Robot shorthand | "Null deref L42. Fix: early return." | Full short sentences |
+| Label on every comment | Five comments all start `non-blocking:` after a body saying they are optional | Weight once in the body; label only exceptions |
+| Trailing weight tag | "...Could we do X? Not blocking." | Delete, or one plain lead-in if weight is unclear |
+| Mechanism dump | "X used to sort A, but Y uses B, so C now shows before D here" in one sentence | Trigger + visible effect; detail only if needed |
+| Caveat stacking | "...would fix it, though that also changes Z, if that matters" | Drop the caveat or make it its own short sentence |
+| Hedge tails | "Probably fine, but worth a quick check", "worth naming", "would help" | Ask the question directly or cut |
+| Template sameness | Every comment in a batch has the same opener and structure | Mix questions, short statements and suggestions |
 
 ## Formatting
 
@@ -98,4 +112,4 @@ Reply after fixing:
 >
 > Good: Good catch, fixed in `a1b2c3d`.
 
-More cases (PR description, bug report, ticket, status update, chat, disagreement, secrets, over-shortened text): read `references/examples.md` when drafting one of those types or when a draft still sounds robotic after the cut list.
+More cases (review batch and summary body, PR description, bug report, ticket, status update, chat, disagreement, secrets, over-shortened text): read `references/examples.md` when drafting a multi-comment review or one of those types, or when a draft still sounds robotic after the cut list.

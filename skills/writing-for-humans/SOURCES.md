@@ -18,6 +18,12 @@ Research observed 2026-11-12. Public websearch failed (`fetch failed`); skills.s
 | [Google eng-practices: review comments](https://google.github.io/eng-practices/review/reviewer/comments.html) | canonical guidance / high, mutable | Comment on code not the person, explain why when needed, label severity (Nit/Optional/FYI). CC BY 3.0; ideas only. |
 | [Conventional Comments](https://conventionalcomments.org/) | secondary convention / high, mutable | Labels such as nitpick/suggestion/issue and blocking/non-blocking decorations. Adopted only as "use the team's convention if it has one". No text copied. |
 | skills.sh results: t3dotgg/tstack `leaving-pr-comments`, vercel-labs `writing-guidelines`, obra `writing-clearly-and-concisely`, miqdadbadjuber `anti-slop`, proseify `anti-prose-slop` | discovery / medium | Compared and not adopted: AI-disclosure banner (user did not ask), doc-review flow, generic Strunk rules, UI-focused or MCP-dependent skills. t3dotgg secret check reflected in the pre-publish checklist. |
+| [PostHog: How we review PRs](https://posthog.com/handbook/engineering/how-we-review) | canonical team guidance / high, mutable; observed 2026-11-19 | Prefixes `blocking:`/`nit:`/`suggestion:`/`question:`; an unprefixed comment is a suggestion. Basis for "label only exceptions". Ideas only. |
+| [GitLab Code Review Guidelines](https://docs.gitlab.com/development/code_review/) | canonical team guidance / high, mutable; observed 2026-11-19 | Summary note after line comments ("Looks good to me", "Just a couple things to address"); offer alternatives as questions. Note: GitLab itself asks for `non-blocking:` marks; we narrow to "when the body has not set the weight". Ideas only. |
+| [Michael Lynch: How to Do Code Reviews Like a Human](https://mtlynch.io/human-code-reviews-1/) | practitioner essay / high | Requests not commands, "we"/"what about...", `old -> new` corrections, code examples. Ideas only. |
+| [Tidyteam: Writing review comments](https://code-review.tidyverse.org/reviewer/comments.html) | team guidance / medium | Nit/Optional/FYI labels to prevent misreading; approve with comments. Ideas only. |
+| [Zenn: no-ai-slop vs review quality](https://zenn.dev/mskbhd/articles/lab-213-no-ai-slop) | secondary experiment / low-medium (11 samples) | Style checks miss natural-but-thin comments; supports keeping fact preservation alongside tone rules. |
+| Local published review logs (`~/.agent-work/booqable/.../feedback.md`, `gh-review-draft.md`; PRs #20684, #20352, #20296, #20205) | primary evidence / high | Every comment prefixed `non-blocking:` after a body saying all were optional; trailing `Not blocking.`; one-sentence causal chains; hedge tails; identical shape across a batch. User rewrites were question-led and casual. Used only as adapted, renamed examples; no verbatim third-party text stored. |
 | Local pr-review (`SKILL.md` section 3, `references/calibration.md`), review-triage section 6, feature-spec-breakdown section 3 | canonical local / high | Existing draft-style rules stay; new skill supplies shared voice. Their structure, approval and publication gates win. |
 
 Stopping rationale: the two highest-signal humanizer skills, one issue/PR skill and two review-comment conventions cover tells, length, structure and review etiquette. Further generic writing guides repeated the same rules.
@@ -29,6 +35,8 @@ Stopping rationale: the two highest-signal humanizer skills, one issue/PR skill 
 - adopted: wording-only boundary; publication authority stays with callers.
 - adopted: wiring as one-line pointers in pr-review (draft style), review-triage (section 6 replies) and feature-spec-breakdown (section 3 ticket prose), with the caller's structure taking precedence.
 - rejected: vendoring upstream lists (would need MIT notices; user chose independent wording), AI-disclosure banner, hook enforcement, scoring rubric.
+- adopted (2026-11-19): weight once in the review body, label only exceptions; "Sound like a teammate" rules (one idea per comment, trigger + effect over mechanism, vary shape, questions for intent); six new cut-list tells; review-batch example adapted from real drafts. pr-review line on nonblocking marks changed to match (user approved both).
+- rejected (2026-11-19): banning labels outright (teams with conventions need them); "never say you" as a hard rule (kept as preference).
 - deferred: style mirroring from the user's real comments; add anonymized cases under `references/evidence/` if drafts still miss.
 
 ## Coverage matrix
@@ -60,3 +68,4 @@ Desk inspection only; no trigger classifier run.
 ## Changelog
 
 - 2026-11-12: created.
+- 2026-11-19: label/weight rule, teammate-voice section, new tells, review-batch example; sources from PostHog, GitLab, Lynch, tidyteam and local review logs.

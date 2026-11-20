@@ -32,7 +32,7 @@ Read `references/calibration.md` when importance, disputed reachability or wordi
 
 ## 3. Draft style
 
-Write every draft with `writing-for-humans`; the rules here win where they differ. Natural short sentences, usually 1-3 per comment. Lead with what goes wrong and when, then concrete impact; add an example only when it clarifies the mechanism. Suggest the smallest sound fix; use a `suggestion` block only when replacing that exact range fully fixes the issue and syntax/companion changes are verified. No finding IDs, Problem/Evidence/Fix labels, severity boilerplate, filler praise or repeating inline comments in the body. Mark nonblocking suggestions as such. Evidence detail stays local unless the author needs it to act.
+Write every draft with `writing-for-humans`; the rules here win where they differ. Natural short sentences, usually 1-3 per comment. Lead with what goes wrong and when, then concrete impact; add an example only when it clarifies the mechanism. Suggest the smallest sound fix; use a `suggestion` block only when replacing that exact range fully fixes the issue and syntax/companion changes are verified. No finding IDs, Problem/Evidence/Fix labels, severity boilerplate, filler praise or repeating inline comments in the body. State weight once in the review body (for example "Looks good, a few small things below"); label an individual comment only when it differs from that default, such as `blocking:` on an otherwise optional review. Never repeat a nonblocking label on every comment. Evidence detail stays local unless the author needs it to act.
 
 ## 4. Event, preview, publication
 

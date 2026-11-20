@@ -38,6 +38,7 @@ Public websearch failed with `fetch failed`; read-only `gh search code` and dire
 - Use append-only comment versions and approval snapshots in feedback.md, rather than overwriting drafts or adding index/state files.
 - Require independent current-item reachability checks before keeping historical claims. Do not equate UI-only reachability with security or frequency.
 - Reject automatic publication, automatic omissions, automatic review-event fallback and hard comment/word caps. Keep suggestions optional and complete; implementation is outside scope.
+- 2026-11-19: replaced "Mark nonblocking suggestions as such" with weight-once-in-body. Published reviews (PR #20684, #20352, #20296) prefixed or suffixed every comment with a nonblocking tag even when the body already said so; user found it robotic. Basis: PostHog review handbook (unprefixed = suggestion), GitLab code review guidelines (summary note). Details in writing-for-humans `SOURCES.md`.
 
 ## Coverage matrix
 

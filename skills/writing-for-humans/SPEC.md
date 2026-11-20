@@ -18,15 +18,16 @@ Out of scope: replies to the user in the current conversation, code comments, do
 ## Runtime contract
 
 - Switch voice only for the drafted text; the session's conversation style is unchanged.
+- In multi-comment reviews, weight is stated once in the summary body; individual comments are labeled only when they differ from it.
 - Point first; keep every needed fact; cut wording, never data. Examples, snippets and bullets are allowed when they make the text faster to act on.
 - Length budgets are defaults; repo, team and tracker templates and the calling skill's structure win.
 - Wording guidance only: approval and publication gates stay with the caller and user rules.
-- Bundled file loaded at runtime: `references/examples.md`, only for non-comment text types or when a draft still sounds robotic.
+- Bundled file loaded at runtime: `references/examples.md`, only for multi-comment reviews, non-comment text types, or when a draft still sounds robotic.
 
 ## Reference architecture
 
-- `SKILL.md`: scope, workflow, budgets, voice, cut list, formatting, checklist, two core examples.
-- `references/examples.md`: per-type before/after examples, robust variants (disagreement, uncertainty, secrets) and two anti-patterns (lossy shortening, robot shorthand).
+- `SKILL.md`: scope, workflow, budgets, voice, teammate-voice rules, cut list, formatting, checklist, two core examples.
+- `references/examples.md`: review batch with summary body (adapted from real drafts), per-type before/after examples, robust variants (disagreement, uncertainty, secrets) and two anti-patterns (lossy shortening, robot shorthand).
 - `SOURCES.md`: provenance, licenses, decisions, trigger checks, validation.
 
 ## Validation
@@ -38,7 +39,7 @@ Out of scope: replies to the user in the current conversation, code comments, do
 ## Known limitations
 
 - Prompt guidance only; no hook enforces it at post time.
-- Examples are synthetic. No real comments from the user or third parties are stored.
+- Examples are synthetic or adapted from the user's own agent drafts with identifiers renamed. No verbatim third-party comments are stored.
 - English-centric cut list; other languages rely on the general rules.
 
 ## Maintenance
