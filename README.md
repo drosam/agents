@@ -70,7 +70,7 @@ flowchart TD
     breakdown --> approve --> S2
     debug --> tdd
     S2 --> S3
-    S3 -->|findings| sources
+    S3 -->|review report| sources
     triage -->|Fix: one commit per fix| commit
     S3 -->|clean| commit
     commit -.->|next ticket| S2

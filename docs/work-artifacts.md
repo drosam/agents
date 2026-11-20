@@ -35,7 +35,7 @@ All paths below are relative to `<work-area>`, not the current worktree, this re
     notes.md                      # grill-with-docs interview recovery notes
     tickets/index.md              # breakdown outline, statuses, coverage
     tickets/NN-<slug>.md          # one reviewed ticket per file
-    reviews/                      # code-review / review-triage artifacts
+    reviews/                      # code-review / review-triage / pr-review artifacts
   context/CONTEXT.md              # shared domain glossary
   context/CONTEXT-MAP.md          # optional multi-context map
   context/<context>/CONTEXT.md    # optional per-context glossary
