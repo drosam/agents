@@ -6,7 +6,7 @@ extensions: true
 
 # Code Review - Intent-Blind Implementation Audit
 
-Perform one independent read-only audit of what the implementation actually does. Do not infer or evaluate author intent.
+Perform one independent read-only audit of what the implementation actually does. Do not infer or evaluate author intent. You are one independent sample; never inspect another worker's output.
 
 ## Input boundary
 

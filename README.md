@@ -39,7 +39,7 @@ flowchart TD
 
     subgraph S3["3 Verify"]
         review["code-review"]
-        workers["workers: behavior, blind,<br/>code-health, security,<br/>simplicity, tests"]
+        workers["workers per round: behavior, blind,<br/>code-health, security, tests,<br/>simplicity, approach, spec"]
         simplify["simplify-code<br/>propose, edit approved only"]
         qa["qa-review<br/>Playwright + Figma"]
         review --> workers

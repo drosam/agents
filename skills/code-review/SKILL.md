@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Performs exhaustive, evidence-based code review of diffs, pull requests, patches, and AI-generated changes. Use when asked to review code, review a PR, find edge cases, check repo rules and best practices, verify relevant docs, compare recent deployed patterns, or perform a pre-merge audit, deep review, or harsh code-quality audit. Also use for "for real", verifying a completed fix, or evidence before declaring work done; not for test-first implementation or initial bug diagnosis. Covers correctness, security, tests, maintainability, and rollout compatibility without assuming a later human review.
+description: Performs exhaustive, evidence-based code review of diffs, pull requests, patches, and AI-generated changes. Use when asked to review code, review a PR, find edge cases, check repo rules and best practices, verify relevant docs, compare recent deployed patterns, or perform a pre-merge audit, deep review, or harsh code-quality audit. Also use for "for real", verifying a completed fix, or evidence before declaring work done; not for test-first implementation or initial bug diagnosis. Covers correctness, security, tests, maintainability, rollout compatibility, alternative approaches and requirement soundness without assuming a later human review.
 ---
 
 # Code Review
@@ -40,6 +40,7 @@ Use the repository's work area, shared by all worktrees: `<work-area>` = `~/.age
 - Establish requirement sources before judging completion: re-read the original request and explicit conversation decisions, then referenced issue/PRD/design acceptance criteria and applicable repository/API/ADR contracts. Record a source locator (message/decision, document section or version) for each material requirement. Do not assume unavailable conversation history or an unreferenced document describes this task.
 - Map each material requirement to delivered behavior, inspected code and discriminating checks/results; label it verified, violated or unverified. Separate confirmed requirements from inferred expectations. Existing tests are supporting evidence, not unquestionable intent; never derive the expected behavior solely from the implementation under review.
 - Check missing requirements, speculative additions and accidental scope expansion. If no spec exists, use explicit user intent and established contracts without inventing requirements. Resolve conflicts or consequential missing decisions with a targeted question; otherwise record the gap and mark the affected verification incomplete. Do not certify task completion with unknown acceptance criteria.
+- Requirements are evidence of intent, not proof that the intent is sound. Record every requirement source for the spec worker; its soundness questions and the approach worker's alternatives go to `## Challenges` for user decision.
 
 | Change | Relevant docs to inspect |
 | --- | --- |
@@ -73,11 +74,11 @@ Recency and deployment are evidence of use, not proof of correctness. Do not rec
 
 ## 4. Run independent review rounds
 
-Before dispatch, read and follow `references/review-rounds.md`. It defines round selection, the preflight cost announcement, the four existing review dimensions, parallel dispatch, the single intent-blind worker, the single whole-change simplicity worker, failure recovery and the unique-claim ledger.
+Before dispatch, read and follow `references/review-rounds.md`. It defines round selection, the preflight cost announcement, the four existing review dimensions, parallel dispatch, the per-round intent-blind, simplicity, approach and spec workers, failure recovery and the unique-claim ledger.
 
-Default full review: 2 independent rounds x 4 dimensions, plus 1 intent-blind worker and 1 whole-change simplicity worker. Run spec mapping, documentation/history collection, checks and final verification once. An explicit valid round count from 1 through 3 overrides the default; a quick full-dimension or explicitly narrowed review defaults to 1. Quick full-dimension reviews retain blind and simplicity; narrowed reviews omit them unless explicitly included. Invalid explicit counts require correction, not silent clamping. Print the selected rounds and worker count, then start without another confirmation.
+Default full review: 2 independent rounds. Each round runs the 4 dimensions plus 1 intent-blind, 1 whole-change simplicity, 1 approach and, when a requirements source exists, 1 spec worker. Run spec mapping, documentation/history collection, checks and final verification once. An explicit valid round count from 1 through 3 overrides the default; a quick full-dimension or explicitly narrowed review defaults to 1. Quick full-dimension reviews retain every role; narrowed reviews omit blind, simplicity, approach and spec unless explicitly included. Invalid explicit counts require correction, not silent clamping. Print the selected rounds and worker count, then start without another confirmation.
 
-Deep correctness and structural scrutiny remain part of the same four dimensions, not extra dimensions. Repeated rounds are independent samples: workers receive identical pinned inputs but never earlier findings. The simplicity worker separately challenges whole-change scope/approach and does not count as round agreement. Agreement can guide confidence and tie-breaking only; it is not evidence and never changes severity. A failed required sample, simplicity or blind pass remains unchecked and cannot become a clean result.
+Deep correctness and structural scrutiny remain part of the same four dimensions, not extra dimensions. Repeated rounds are independent samples: workers receive identical pinned inputs but never earlier findings. Simplicity challenges whole-change scope, approach proposes better same-scope designs and spec questions the requirements themselves; none of them counts as round agreement. Agreement can guide confidence and tie-breaking only; it is not evidence and never changes severity. A failed required sample of any role remains unchecked and cannot become a clean result.
 
 ### Behavior and edge-case matrix
 
@@ -155,12 +156,13 @@ For every candidate:
 5. Merge only identical root-cause/remedy findings. Preserve distinct failures in the same file. Resolve agent disagreement using evidence, not vote counts.
 6. Search relevant sibling paths for variants of a confirmed defect. If multiple fixes restore the same invariant, distinguish repaired symptoms from remaining ownership/representation costs; do not call a fixed bug still present or assume a shared root cause without tracing it. Keep untouched/unrelated occurrences separate from introduced regressions.
 7. Recheck scope/HEAD/worktree stability and ledger completeness before the verdict. Re-review fixes on their new revision; previous conclusions do not automatically transfer.
+8. Verify every approach alternative, spec soundness question and optional scope challenge against cited requirements, decisions and code before reporting it. Drop unsupported ones. Report supported ones under `## Challenges` as decisions for the user; they never set severity, block or change the verdict. When a challenge exposes a concrete reachable defect, report that defect as a normal finding (label spec-caused ones `spec-origin`) and keep the decision under Challenges.
 
 On follow-up or completed-fix reviews, record repair closure at the pinned new revision: prior finding/revision -> changed owner/API -> affected consumers, discriminating tests, docs/PR claims and newly applicable rules -> evidence or exact gap. Include rules activated by the repair itself, such as an explanation required for a new safety bypass. Check both the original failure and repair-induced contract, duplication or dead-code changes. Distinguish already-caught but incompletely repaired issues from newly introduced issues and defects missed at the earlier revision; absent prior evidence is not proof of a miss. Inspect only affected surfaces, preserve unrelated work, and do not edit code or PR text under review authority.
 
 Read `references/review-examples.md` when calibrating evidence or resolving a disputed finding; use its ownership, mode-boundary and lifecycle cases when the change involves synchronized state, repeated repair callbacks or mode-dependent effects.
 
-Use that reference's reuse/contract, same-identity event and repair-closure cases for parallel helpers, repeated-action behavior or follow-up fixes. These supplement the existing review dimensions; never trade away correctness, security, tests, documentation or other code-health checks to perform them.
+Use that reference's reuse/contract, same-identity event and repair-closure cases for parallel helpers, repeated-action behavior or follow-up fixes, and its challenge case when classifying approach alternatives or spec concerns. These supplement the existing review dimensions; never trade away correctness, security, tests, documentation or other code-health checks to perform them.
 
 ### Severity and gate
 
@@ -213,14 +215,30 @@ Use this report format; no finding cap:
   Check: Describe a test that catches this problem.
 - P2 [nonblocking: reason] `path:line` - ...
 
+## Challenges
+Decisions for the user. These do not change the verdict.
+- Approach `path` or area - Short title naming the alternative.
+  Current: What the change does now.
+  Alternative: The different approach.
+  Tradeoff: What gets better and what gets worse, including switching cost.
+  Evidence: Requirement, decision and code locations; counterevidence. Raised by x/N rounds.
+  Decide: The question the user must answer.
+- Spec `source locator` - Short title naming the concern.
+  Concern: What does not make sense and why.
+  Evidence: Code, data or doc locations; counterevidence. Raised by x/N rounds.
+  Impact: What happens if the spec stays as written.
+  Decide: Concrete options, including keeping the spec.
+- Scope `source locator` - Optional scope challenge from simplicity, same labels as Spec.
+
 ## Coverage
 - Target: base..head, diff cmd, stability.
-- Rounds: N/N complete; behavior R1..RN | security R1..RN | tests R1..RN | rules/docs R1..RN | blind checked | simplicity checked - or `unchecked: reason`.
+- Rounds: N/N complete; behavior R1..RN | security R1..RN | tests R1..RN | rules/docs R1..RN | blind R1..RN | simplicity R1..RN | approach R1..RN | spec R1..RN or `n/a: no requirements source` - or `unchecked: reason`.
 - Files: N in full diff + surrounding areas (groups, not file lists).
 - Requirements: `req (source) -> verified | violated | unverified (evidence)` one line each; inferred expectations labeled.
 - Docs/rules: sources checked; stale/conflicts/missing.
 - PR/history: PR # or none/lookup unavailable; commit range; prior concerns vs current code; gaps.
 - Patterns: compared paths@rev -> consistent | departure | divergence (why).
+- Challenges: alternative approaches considered -> why kept or raised; requirement sources questioned; or n/a with reason.
 - Ownership: authoritative -> derived state/policy; writers/repair obligations, source locations and justified separations; or n/a with reason.
 - Code quality: reuse candidate paths + semantic comparison/decision; producer -> consumer contracts and actual use; checked | unchecked | n/a with reason.
 - Scenarios: relevant first/repeated, same/different identity and pending/settled cases -> expected/actual + code/test evidence; or n/a with reason.
@@ -237,6 +255,6 @@ BLOCKED | INCOMPLETE | READY - Explain the result and reviewed scope in plain wo
 - `INCOMPLETE`: no established blocker, but a required pass/check, relevant doc/contract, or safety-critical deployment assumption remains unverified. Not permission to merge.
 - `READY`: all applicable review dimensions checked, required validations passed, no blocking findings, and any remaining nonblocking issues stated. Not a guarantee of defect-free code or authorization to merge/deploy.
 
-If no findings, write `No actionable findings in reviewed scope.` and still include coverage and verdict. Never emit bare `No findings.` as an approval signal. Return `Artifact: <relative review.md path>` after verified persistence, then the complete report; the saved and returned report bodies must match.
+If no findings, write `No actionable findings in reviewed scope.` and still include coverage and verdict. If no challenges survive verification, write `No challenges.`; the Challenges coverage line still shows what was questioned. Never emit bare `No findings.` as an approval signal. Return `Artifact: <relative review.md path>` after verified persistence, then the complete report; the saved and returned report bodies must match.
 
 Honor an explicitly narrower request (security-only, named files, quick triage), but label excluded dimensions; it cannot produce full-change READY. Pasteable comments may supplement, not replace, the coverage/verdict. If output limits prevent listing every finding, mark the report incomplete and continue in batches; never silently discard the tail.
