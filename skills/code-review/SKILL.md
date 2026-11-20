@@ -70,7 +70,7 @@ Perform this pass for every review; mark it inapplicable only with a reason, suc
 7. Compare semantics: canonical helper/owner, error handling, permissions, transactions, retries, query/scoping strategy, tests, flags, configuration, and observability. Decide `consistent`, `justified departure`, `risky divergence`, or `insufficient evidence`, citing path plus revision/PR and rationale.
 8. For changed runtime contracts, check coexistence with deployed producers/consumers, queued old jobs, stored payloads, caches, schema versions, and flags. Check expand-contract sequencing and rollback, not just the final all-new state.
 
-Recency and deployment are evidence of use, not proof of correctness. Do not recommend copying a recently deployed flaw. Report a pattern difference only with a violated rule/invariant or concrete maintenance/behavior cost. Unrelated old defects stay outside the change's findings; newly exposed/worsened defects belong in the review. If live-version compatibility matters and cannot be established, leave that dimension unchecked and the review incomplete.
+Recency and deployment are evidence of use, not proof of correctness. Do not recommend copying a recently deployed flaw. Report a pattern difference only with a violated rule/invariant or concrete maintenance/behavior cost. Unrelated old defects stay outside the change's findings and go under `## Other observations`; newly exposed/worsened defects belong in the review. If live-version compatibility matters and cannot be established, leave that dimension unchecked and the review incomplete.
 
 ## 4. Run independent review rounds
 
@@ -156,7 +156,8 @@ For every candidate:
 5. Merge only identical root-cause/remedy findings. Preserve distinct failures in the same file. Resolve agent disagreement using evidence, not vote counts.
 6. Search relevant sibling paths for variants of a confirmed defect. If multiple fixes restore the same invariant, distinguish repaired symptoms from remaining ownership/representation costs; do not call a fixed bug still present or assume a shared root cause without tracing it. Keep untouched/unrelated occurrences separate from introduced regressions.
 7. Recheck scope/HEAD/worktree stability and ledger completeness before the verdict. Re-review fixes on their new revision; previous conclusions do not automatically transfer.
-8. Verify every approach alternative, spec soundness question and optional scope challenge against cited requirements, decisions and code before reporting it. Drop unsupported ones. Report supported ones under `## Challenges` as decisions for the user; they never set severity, block or change the verdict. When a challenge exposes a concrete reachable defect, report that defect as a normal finding (label spec-caused ones `spec-origin`) and keep the decision under Challenges.
+8. Put every actionable recommendation in `## Findings`, `## Challenges`, `## Other observations` or the Coverage `Gaps` line, never only in other Coverage prose, so triage and PR-review workflows can find it. Each Gaps entry names one missing check and its next action.
+9. Verify every approach alternative, spec soundness question and optional scope challenge against cited requirements, decisions and code before reporting it. Drop unsupported ones. Report supported ones under `## Challenges` as decisions for the user; they never set severity, block or change the verdict. When a challenge exposes a concrete reachable defect, report that defect as a normal finding (label spec-caused ones `spec-origin`) and keep the decision under Challenges.
 
 On follow-up or completed-fix reviews, record repair closure at the pinned new revision: prior finding/revision -> changed owner/API -> affected consumers, discriminating tests, docs/PR claims and newly applicable rules -> evidence or exact gap. Include rules activated by the repair itself, such as an explanation required for a new safety bypass. Check both the original failure and repair-induced contract, duplication or dead-code changes. Distinguish already-caught but incompletely repaired issues from newly introduced issues and defects missed at the earlier revision; absent prior evidence is not proof of a miss. Inspect only affected surfaces, preserve unrelated work, and do not edit code or PR text under review authority.
 
@@ -230,6 +231,13 @@ Decisions for the user. These do not change the verdict.
   Decide: Concrete options, including keeping the spec.
 - Scope `source locator` - Optional scope challenge from simplicity, same labels as Spec.
 
+## Other observations
+Pre-existing or out-of-scope problems noticed during review. They do not change the verdict.
+- `path:line` - Short title naming the problem.
+  Problem: What can go wrong, in plain words.
+  Evidence: What was inspected; say if it is unconfirmed.
+  Follow-up: Suggested next step, such as a separate fix, ticket or check.
+
 ## Coverage
 - Target: base..head, diff cmd, stability.
 - Rounds: N/N complete; behavior R1..RN | security R1..RN | tests R1..RN | rules/docs R1..RN | blind R1..RN | simplicity R1..RN | approach R1..RN | spec R1..RN or `n/a: no requirements source` - or `unchecked: reason`.
@@ -255,6 +263,6 @@ BLOCKED | INCOMPLETE | READY - Explain the result and reviewed scope in plain wo
 - `INCOMPLETE`: no established blocker, but a required pass/check, relevant doc/contract, or safety-critical deployment assumption remains unverified. Not permission to merge.
 - `READY`: all applicable review dimensions checked, required validations passed, no blocking findings, and any remaining nonblocking issues stated. Not a guarantee of defect-free code or authorization to merge/deploy.
 
-If no findings, write `No actionable findings in reviewed scope.` and still include coverage and verdict. If no challenges survive verification, write `No challenges.`; the Challenges coverage line still shows what was questioned. Never emit bare `No findings.` as an approval signal. Return `Artifact: <relative review.md path>` after verified persistence, then the complete report; the saved and returned report bodies must match.
+If no findings, write `No actionable findings in reviewed scope.` and still include coverage and verdict. Write `None.` under Other observations when there are none. If no challenges survive verification, write `No challenges.`; the Challenges coverage line still shows what was questioned. Never emit bare `No findings.` as an approval signal. Return `Artifact: <relative review.md path>` after verified persistence, then the complete report; the saved and returned report bodies must match.
 
 Honor an explicitly narrower request (security-only, named files, quick triage), but label excluded dimensions; it cannot produce full-change READY. Pasteable comments may supplement, not replace, the coverage/verdict. If output limits prevent listing every finding, mark the report incomplete and continue in batches; never silently discard the tail.

@@ -1,5 +1,9 @@
 # PR Review Sources and Decisions
 
+## Whole-review shortlist
+
+User report: pr-review, like review-triage, shortlisted only Findings. Evidence: of three local feedback logs, one surfaced a Coverage spec-scope conflict as an Omit candidate, but a stale plan and a Gaps bullet with four unverified limits went unmentioned. User decision: shortlist every actionable item using review-triage's item kinds and `covered by #M` rule; draft challenges and material gaps as questions to the author; default Omit for gaps/unverified requirements unless the author must act, and for other observations unless the PR touches that code. Keep/Reword/Omit/Investigate and publication gates are unchanged. See review-triage/SOURCES.md "Whole-review queue extraction" for the shared audit.
+
 ## Provenance and scope
 
 User approved implementation of a separate outgoing-review skill after research and clarified "Suggestions only" for fixes. Preserve full code-review investigation, offer both direct and existing-report entry points, iterate on important feedback, let the user choose the review event, and publish last only after explicit approval. Persist the source review (code-review default storage, indexes included) plus an append-only feedback/history file.

@@ -37,6 +37,7 @@ Outputs: full immutable `review.md`; append-only `feedback.md` with stable IDs, 
 12. All decisions, modifiers, material corrections, approved text and publication results are recoverable in timestamp order. Failed appends are never called saved.
 13. Batched review uses exact authorized event/commit/body/comments. No own-PR failure fallback, arbitrary anchors, unrelated pending-review submission or blind retry.
 14. Closed PR, inaccessible context, failed worker/check, publication error, stale revision and logging failure have explicit stop/recovery paths.
+15. The shortlist covers every actionable item in the source review, not only Findings, using review-triage's item kinds and `covered by #M` rule. Challenges are drafted as questions to the author; gaps and unverified requirements default to Omit unless the author must act or answer; other observations default to Omit unless the PR touches that code. Omitting any item is an explicit logged decision.
 
 ## Validation and limitations
 
