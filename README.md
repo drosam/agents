@@ -24,10 +24,13 @@ flowchart TD
         plan["create-plan<br/>work/&lt;id&gt;/plan.md"]
         spec["to-feature-spec<br/>work/&lt;id&gt;/spec.md"]
         breakdown["feature-spec-breakdown<br/>tickets/NN-*.md<br/>optional todos / tracker"]
+        diagrams["engineering-diagrams<br/>diagrams/NN-*.svg"]
         grill <--> plan
         plan <-->|reciprocal links| spec
         spec --> breakdown
         plan --> breakdown
+        spec -.-> diagrams
+        plan -.-> diagrams
     end
 
     approve{{"Design approved != implementation approved"}}
@@ -123,6 +126,7 @@ Each skill's `SOURCES.md` records full provenance, decisions and validation. "Ba
 | commit | Local | [getsentry/skills](https://github.com/getsentry/skills/tree/c2f99a5b04b4cd992ec3022d7c2c3e23e938d241) `commit` |
 | create-plan | Local | [getsentry/skills](https://github.com/getsentry/skills/tree/c2f99a5b04b4cd992ec3022d7c2c3e23e938d241) `skill-writer` |
 | debug | Local | - |
+| engineering-diagrams | Local | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/0eeda75a708f419560d5e032693618bb9954f17b) (MIT); [yizhiyanhua-ai/fireworks-tech-graph](https://github.com/yizhiyanhua-ai/fireworks-tech-graph/tree/1ca1ff9cfcb67893a43d32b9ef3a1b782c44a46f) (MIT); C4 model; Agile Modeling |
 | feature-spec-breakdown | [mattpocock/skills](https://github.com/mattpocock/skills/tree/9e2abf8611a345efbf779aacb171cff015bcdeb6) `to-tickets` | - |
 | grill-with-docs | [mattpocock/skills](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7) `grill-with-docs`, `grilling`, `domain-modeling` | - |
 | improve-skills-from-session | Local | [cursor/plugins](https://github.com/cursor/plugins/tree/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack/skills/reflect) pstack `reflect` (MIT) |

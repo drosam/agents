@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="slug-title slug-desc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="slug-title">Feature - what this diagram shows</title>
+  <desc id="slug-desc">One or two sentences stating what the diagram means, not which shapes it has.</desc>
+  <defs>
+    <marker id="slug-arr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0 L10 4 L0 8 z" fill="#475569"/></marker>
+    <marker id="slug-arr-new" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0 L10 4 L0 8 z" fill="#0f766e"/></marker>
+    <marker id="slug-arr-fail" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0 L10 4 L0 8 z" fill="#b91c1c"/></marker>
+    <marker id="slug-arr-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M1 1 L9 4 L1 7" fill="none" stroke="#475569" stroke-width="1.5"/></marker>
+  </defs>
+
+  <!-- 1 background: opaque so the diagram reads on dark pages -->
+  <rect width="960" height="560" fill="#fafaf9"/>
+
+  <!-- 2 header: eyebrow = TYPE · WORK-ID · SOURCE SECTIONS -->
+  <text x="40" y="32" font-size="10" letter-spacing=".14em" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">FLOW · WORK-ID · PLAN 3, 4</text>
+  <text x="40" y="62" font-size="28" fill="#0f172a" font-family="'Instrument Serif', 'Iowan Old Style', Georgia, serif">Short diagram title</text>
+  <text x="40" y="84" font-size="13" fill="#475569">One sentence: the claim this diagram makes.</text>
+
+  <!-- 3 frames and zones (data-role="frame"), then 4 connectors -->
+  <path d="M300 172 H478" stroke="#0f766e" stroke-width="1.5" fill="none" marker-end="url(#slug-arr-new)"/>
+
+  <!-- 5 label masks + labels: mask fill = background color -->
+  <rect x="342" y="152" width="96" height="16" fill="#fafaf9"/>
+  <text x="390" y="164" font-size="12" fill="#0f172a" text-anchor="middle">label text</text>
+
+  <!-- 6 nodes, then tags -->
+  <rect x="80" y="140" width="220" height="64" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="96" y="168" font-size="15" font-weight="600" fill="#0f172a">Existing thing</text>
+  <text x="96" y="188" font-size="11" fill="#475569" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">code_identifier</text>
+
+  <rect x="480" y="140" width="220" height="64" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="496" y="168" font-size="15" font-weight="600" fill="#0f172a">New thing</text>
+  <text x="496" y="188" font-size="12" fill="#475569">short sublabel</text>
+  <rect x="648" y="148" width="44" height="16" rx="2" fill="#ffffff" stroke="#0f766e"/>
+  <text x="670" y="160" font-size="9" font-weight="700" letter-spacing=".06em" fill="#0f766e" text-anchor="middle">NEW</text>
+
+  <!-- 7 legend: only symbols this diagram uses -->
+  <g id="legend">
+    <line x1="40" y1="506" x2="920" y2="506" stroke="#e7e5e4"/>
+    <rect x="40" y="522" width="16" height="16" rx="3" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+    <text x="64" y="535" font-size="12" fill="#334155">New</text>
+    <rect x="130" y="522" width="16" height="16" rx="3" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+    <text x="154" y="535" font-size="12" fill="#334155">Existing</text>
+    <path d="M240 530 H276" stroke="#0f766e" stroke-width="1.5" marker-end="url(#slug-arr-new)"/>
+    <text x="284" y="535" font-size="12" fill="#334155">New call or link</text>
+  </g>
+</svg>
