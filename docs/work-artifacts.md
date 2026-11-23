@@ -36,6 +36,7 @@ All paths below are relative to `<work-area>`, not the current worktree, this re
     tickets/index.md              # breakdown outline, statuses, coverage
     tickets/NN-<slug>.md          # one reviewed ticket per file
     diagrams/NN-<slug>.svg        # engineering-diagrams output; diagrams/README.md maps sources
+    infographic/<name>.svg        # infographic output; <name>-brief.md is a paste-ready image prompt
     reviews/                      # code-review / review-triage / pr-review artifacts
   context/CONTEXT.md              # shared domain glossary
   context/CONTEXT-MAP.md          # optional multi-context map
@@ -57,6 +58,7 @@ This convention governs generated working documents, not application source, tes
 | `to-feature-spec` (formerly `to-prd`) | Capture agreed requirements, not a new interview | `<work-area>/work/<work-id>/spec.md` |
 | `feature-spec-breakdown` (formerly `feature-spec-to-todos`) | Agree slice list, review each ticket, then optionally create todos or publish to a named tracker | `<work-area>/work/<work-id>/tickets/`; todos with `spec:<Work-ID>` prefix |
 | `engineering-diagrams` | Draw, update or review SVG diagrams grounded in the selected spec/plan | `<work-area>/work/<work-id>/diagrams/` |
+| `infographic` | One-image visual summary of a spec, plan, PR, session or text | `<work-area>/work/<work-id or slug>/infographic/` |
 | `grill-with-docs` | Challenge design, settle terms, offer significant ADRs | `<work-area>/work/<work-id>/notes.md`, `<work-area>/context/` and `decisions/` |
 
 Plan -> spec -> tickets is optional. A spec can precede its plan; simple work can have neither. Planning, document selection, and design approval never imply implementation approval.

@@ -25,12 +25,15 @@ flowchart TD
         spec["to-feature-spec<br/>work/&lt;id&gt;/spec.md"]
         breakdown["feature-spec-breakdown<br/>tickets/NN-*.md<br/>optional todos / tracker"]
         diagrams["engineering-diagrams<br/>diagrams/NN-*.svg"]
+        infographic["infographic<br/>infographic/*.svg, *-brief.md"]
         grill <--> plan
         plan <-->|reciprocal links| spec
         spec --> breakdown
         plan --> breakdown
         spec -.-> diagrams
         plan -.-> diagrams
+        spec -.-> infographic
+        plan -.-> infographic
     end
 
     approve{{"Design approved != implementation approved"}}
@@ -130,6 +133,7 @@ Each skill's `SOURCES.md` records full provenance, decisions and validation. "Ba
 | feature-spec-breakdown | [mattpocock/skills](https://github.com/mattpocock/skills/tree/9e2abf8611a345efbf779aacb171cff015bcdeb6) `to-tickets` | - |
 | grill-with-docs | [mattpocock/skills](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7) `grill-with-docs`, `grilling`, `domain-modeling` | - |
 | improve-skills-from-session | Local | [cursor/plugins](https://github.com/cursor/plugins/tree/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack/skills/reflect) pstack `reflect` (MIT) |
+| infographic | Local | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills/tree/c21d13b3cc2894680229ba9959a53281acb9200e) `infographics` (MIT); [nicobailon/visual-explainer](https://github.com/nicobailon/visual-explainer/tree/9d5f880b7e8e0a9a80c890b8e1bb6918b68481ad) (MIT); [patnir411/claude-diagram-skill](https://github.com/patnir411/claude-diagram-skill/tree/939077e2311eb8be193da12348dd4e8d28b4a50c) (no license; ideas only) |
 | pr-review | Local | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official); [feiskyer/claude-code-settings](https://github.com/feiskyer/claude-code-settings/tree/95dab59a62b2031adcb7abf25ae0a60b8a13fdb2) |
 | prod-debug | Local | - |
 | qa-review | Local | [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp); [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/39a74c70d7759d5a6de7a22c04570bb626bbd081); [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli/tree/b85c7a736bb473bf55b584e54a09ffa698d6d871) |

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="ig-title ig-desc">
+  <title id="ig-title">TITLE</title>
+  <desc id="ig-desc">One or two sentences: the lesson and what the image shows.</desc>
+  <defs>
+    <style>
+      text { font-family: Inter, "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: "JetBrains Mono", Menlo, Consolas, monospace; }
+      .h { font-size: 19px; font-weight: 700; letter-spacing: 1.5px; fill: #0F172A; }
+      .ct { font-size: 22px; font-weight: 600; fill: #0F172A; }
+      .cd { font-size: 17px; fill: #475569; }
+      .rt { font-size: 18px; font-weight: 600; fill: #0F172A; }
+      .rs { font-size: 14px; fill: #64748B; }
+    </style>
+    <marker id="ig-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+    <marker id="ig-arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+    <marker id="ig-arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/></marker>
+    <marker id="ig-arr-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0D9488"/></marker>
+    <filter id="ig-shadow" x="-5%" y="-5%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.07"/>
+    </filter>
+    <g id="ig-check"><circle r="11" fill="#16A34A"/><path d="M-5,0 L-1.5,4 L5,-4" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="ig-x"><circle r="11" fill="#FEE2E2"/><path d="M-5,-5 L5,5 M5,-5 L-5,5" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g id="ig-envelope"><rect width="70" height="48" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.2"/><path d="M3,4 L35,28 L67,4" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g id="ig-doc" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linejoin="round"><path d="M4,0 H24 L36,12 V46 H4 Z"/><path d="M24,0 V12 H36"/><path d="M11,24 H29 M11,32 H29 M11,40 H22"/></g>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F8FAFC"/>
+
+  <text x="800" y="70" text-anchor="middle" font-size="44" font-weight="700" fill="#0F172A">TITLE</text>
+  <text x="800" y="108" text-anchor="middle" font-size="20" fill="#475569">Subtitle</text>
+
+  <!-- Zones: see references/layouts.md -->
+  <rect x="60" y="310" width="480" height="170" rx="14" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5" filter="url(#ig-shadow)"/>
+  <use href="#ig-doc" transform="translate(88,330)"/>
+  <text x="150" y="348" class="ct">Card title</text>
+  <text x="150" y="376" class="cd">Short description</text>
+
+  <text x="800" y="870" text-anchor="middle" font-size="17" fill="#64748B">Takeaway line</text>
+</svg>
