@@ -57,7 +57,9 @@ flowchart TD
     end
 
     subgraph META["Side lane: meta"]
+        improve["improve-skills-from-session<br/>propose, edit approved only"]
         meta["skill-writer, find-skills (external)"]
+        improve -->|approved skill edits| meta
     end
 
     voice["writing-for-humans<br/>voice for published text"]
@@ -123,6 +125,7 @@ Each skill's `SOURCES.md` records full provenance, decisions and validation. "Ba
 | debug | Local | - |
 | feature-spec-breakdown | [mattpocock/skills](https://github.com/mattpocock/skills/tree/9e2abf8611a345efbf779aacb171cff015bcdeb6) `to-tickets` | - |
 | grill-with-docs | [mattpocock/skills](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7) `grill-with-docs`, `grilling`, `domain-modeling` | - |
+| improve-skills-from-session | Local | [cursor/plugins](https://github.com/cursor/plugins/tree/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack/skills/reflect) pstack `reflect` (MIT) |
 | pr-review | Local | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official); [feiskyer/claude-code-settings](https://github.com/feiskyer/claude-code-settings/tree/95dab59a62b2031adcb7abf25ae0a60b8a13fdb2) |
 | prod-debug | Local | - |
 | qa-review | Local | [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp); [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/39a74c70d7759d5a6de7a22c04570bb626bbd081); [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli/tree/b85c7a736bb473bf55b584e54a09ffa698d6d871) |
