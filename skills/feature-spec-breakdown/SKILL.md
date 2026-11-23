@@ -82,5 +82,6 @@ Return: ticket directory, counts by status, dependency frontier (tickets ready t
 - Never implement, assign, start, or close work unless asked.
 - Never stage or commit work artifacts or legacy in-repo `.agent-work/` files.
 - Never publish to a tracker without an explicit destination and approval.
+- Work-area artifacts are local: never link or mention spec, plan, ADR, ticket-file, asset, or work-area paths in third-party output (trackers, PRs, chat tools). Local todos may point to ticket files.
 
 For worked cases (happy path, missing plan, partial publish failure, horizontal-slice anti-pattern), read `references/examples.md`.

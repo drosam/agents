@@ -29,11 +29,11 @@ Ask for what is not already given:
 
 - App and destination (team/project/repo/board), parent issue or epic.
 - Fields: destination state, labels, priority, assignee (default: none), estimate. These come from explicit publishing choices, never from the ticket's local `Status` header.
-- Images: upload as attachments if supported, else keep links and list what could not be uploaded.
+- Images: upload local `./assets/` images as attachments if supported; otherwise omit them, list what could not be uploaded, and ask. Keep only public or tracker-accessible external links (for example Figma).
 
 Use the tool the user names (MCP, CLI such as `gh`, or API) and inspect its actual parameters first. If no permitted tool exists, stop and hand over the ticket text for manual creation.
 
-Issue body: only the ticket's Context, Description, Steps to reproduce, and Acceptance criteria. Never publish or map the local `Status`, `Blocked by`, `Source`, or `Published` headers to Linear/Jira. Do not add spec, plan, or ADR citations. Never publish local work-area paths.
+Issue body: only the ticket's Context, Description, Steps to reproduce, and Acceptance criteria. Never publish or map the local `Status`, `Blocked by`, `Source`, or `Published` headers to Linear/Jira. Do not add spec, plan, or ADR citations. Never publish, link, or mention local spec, plan, ADR, glossary, ticket-file, asset, or work-area paths or filenames.
 
 Resolve every body link or plain reference to another ticket as a Markdown hyperlink to that ticket's destination issue URL. If a target URL exists, replace the reference before creation. For forward references within the same publish batch, create the issues first, record all URLs, then update the affected bodies in the approved final pass. Completion requires no local ticket links, plain unresolved ticket references, or inaccessible placeholders in published bodies.
 
