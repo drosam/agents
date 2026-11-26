@@ -1,11 +1,11 @@
 ---
 name: pr-review
-description: Prepares concise, high-signal GitHub reviews when someone requests the user's PR review. Use for "review this PR for me", "draft feedback for GitHub", "turn this code review into PR comments", or walking through outgoing review feedback. Runs code-review or reuses a selected review, refines comments with the user, recommends approve/request changes/comment, and publishes only after explicit approval. Not for exhaustive local audits or addressing incoming comments on the user's code (use review-triage).
+description: Prepares concise, high-signal GitHub reviews when someone requests the user's PR review. Use for "review this PR for me", "draft feedback for GitHub", "turn this code review into PR comments", or walking through outgoing review feedback as one decision table or one by one. Runs code-review or reuses a selected review, refines comments with the user, recommends approve/request changes/comment, and publishes only after explicit approval. Not for exhaustive local audits or addressing incoming comments on the user's code (use review-triage).
 ---
 
 # PR Review
 
-Investigate thoroughly, publish selectively. Flow: source review -> shortlist -> item walk -> event -> exact preview -> explicit publication approval.
+Investigate thoroughly, publish selectively. Flow: source review -> shortlist -> table -> walk chosen items -> event -> exact preview -> explicit publication approval.
 
 ## Boundaries
 
@@ -19,14 +19,17 @@ Investigate thoroughly, publish selectively. Flow: source review -> shortlist ->
 2. Fresh PR: load `code-review` and run it normally; it persists `review.md` and returns `Artifact: <path>`. Existing report: use only an explicitly selected path; read it whole, do not rerun discovery, but check current head/discussion against its revision and re-review changed paths.
 3. Create append-only `feedback.md` beside the selected `review.md`. Use the same log conventions as `review-triage`'s `triage.md` (identity header, `Source: ./review.md`, one dense timestamped line per event, exact decisive user input as a JSON string), with the outgoing vocabulary Keep/Reword/Omit/Investigate plus draft versions, event choice and publication outcome. If the file already exists with conflicting identity, ask. `review.md` stays immutable; corrections and revalidation go in `feedback.md` under the original finding IDs.
 
-## 2. Shortlist, then walk items
+## 2. Shortlist, table, then walk items
+
+By default, verify the whole shortlist and present one decision table: read `references/decision-table.md`. Use Step mode (the rest of this section, for every item) only when the user asks for one by one or chooses **Walk everything**. Items walked from the table also follow the rest of this section, with no continuation stops between them.
+
 
 - Build items from the whole source review, not only Findings, using `review-triage`'s item kinds (`P0`-`P3`, `C-approach`, `C-spec`, `C-scope`, `obs`, `gap`, `req`, `docs`, `note`) and its `covered by #M` rule. Propose which items to publish and which to omit, one short reason each, keeping stable IDs, kinds and source order. Recommendations are not decisions; no silent omission, merge or reorder.
 - Draft challenges as questions to the author, for example "Was a scheduled job considered instead of polling?" or "The spec asks for A and B; which wins for cancelled orders?". Recommend Omit for `gap` and `req` items unless the author must act or answer, such as confirming a rollout precondition. For `obs`, recommend a short nonblocking comment only when the PR touches that code or the author owns it; otherwise recommend Omit and say it should be raised separately.
 - Prioritize introduced/worsened defects with real impact, broken contracts and substantial maintenance cost. Recommend omitting taste, cleanup nits, feedback already in a thread, disproven claims and unrelated pre-existing problems. Do not filter by inherited P-labels, round votes or a comment quota.
-- Investigate only the current item; verify its trigger, impact and counterevidence independently of the report's conclusion. Keep impact, reachability (UI vs API vs crafted request) and unknown frequency separate; a race is not rare without evidence. If evidence is incomplete, name the settling check and offer Investigate or an explicitly uncertain question draft.
+- In Step mode, investigate only the current item; verify its trigger, impact and counterevidence independently of the report's conclusion. Keep impact, reachability (UI vs API vs crafted request) and unknown frequency separate; a race is not rare without evidence. If evidence is incomplete, name the settling check and offer Investigate or an explicitly uncertain question draft.
 - Ask one self-contained interactive question: assessment plus draft in the question's Markdown prompt (never only in narration or reasoning, never referenced as "above"), then Keep / Reword / Omit / Investigate as applicable, recommendation first, single-select. Keep means include this wording, not publish. Reword/Investigate keeps the item open.
-- Log the decision, confirm briefly, pause for continuation before the next item unless the user explicitly waived stops for this session. Batch authority does not waive stops.
+- Log the decision, confirm briefly, pause for continuation before the next item unless the user explicitly waived stops for this session. Batch authority does not waive stops; a table reply does for the items it walks.
 
 Read `references/calibration.md` when importance, disputed reachability or wording needs calibration.
 

@@ -1,5 +1,15 @@
 # PR Review Sources and Decisions
 
+## Default decision table
+
+User decisions: pr-review should match review-triage's Table mode (see review-triage/SOURCES.md "Step / Table / Autopilot modes" for research and design), then "pr review should just show the table" with no Autopilot. Outgoing feedback is public wording the user owns, so automatic Keep/Omit is rejected. Mapping: Fix -> Keep, Skip -> Omit, Defer/Discuss -> Investigate. The table is the default with no mode question; Step mode remains available on request or through **Walk everything**. Self-contained `references/decision-table.md` instead of a cross-skill path.
+
+Worker rules shared with review-triage: batching, failure-to-C and main-agent re-check. Probe tests are excluded: the PR head may not be checked out locally, and checking it out would mutate git state outside this workflow.
+
+Unchanged: the earlier rejections of automatic omissions, automatic event choice, pending remote reviews, publication without exact-preview authorization, and comment caps.
+
+Desk cases (expected, not runtime): 12 items -> table, no mode question; `one by one` request -> Step; `go A B` -> C pending; head moves after the table -> affected item back to C; serious race with unverified reachability -> C; table approval never reaches publication without the preview question.
+
 ## Whole-review shortlist
 
 User report: pr-review, like review-triage, shortlisted only Findings. Evidence: of three local feedback logs, one surfaced a Coverage spec-scope conflict as an Omit candidate, but a stale plan and a Gaps bullet with four unverified limits went unmentioned. User decision: shortlist every actionable item using review-triage's item kinds and `covered by #M` rule; draft challenges and material gaps as questions to the author; default Omit for gaps/unverified requirements unless the author must act, and for other observations unless the PR touches that code. Keep/Reword/Omit/Investigate and publication gates are unchanged. See review-triage/SOURCES.md "Whole-review queue extraction" for the shared audit.

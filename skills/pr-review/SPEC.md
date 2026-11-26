@@ -2,7 +2,7 @@
 
 ## Scope and shape
 
-Workflow-process skill for preparing an outgoing GitHub review with the user. Sequential coordinator: reuse code-review investigation, then user-directed feedback selection and publication. No new discovery workers, scripts, dependencies or scoring systems. Publication details and calibration examples are directly routed references.
+Workflow-process skill for preparing an outgoing GitHub review with the user. Sequential coordinator: reuse code-review investigation, then user-directed feedback selection and publication. No new discovery workers, scripts, dependencies or scoring systems. Publication details, calibration examples and the default decision table are directly routed references.
 
 Not an incoming-feedback repair workflow. Suggested fixes are prose or complete anchored GitHub suggestions only; no local code changes, commits, pushes, applying suggestions, merge or thread-management authority.
 
@@ -16,7 +16,7 @@ Outputs: full immutable `review.md`; append-only `feedback.md` with stable IDs, 
 
 - Investigate at code-review depth without weakening its evidence, rounds, coverage, source snapshots or technical verdict. Incomplete sources never become complete reviews merely because public feedback is short.
 - Verify current-item reachability/impact and counterevidence independently. Preserve API/security concerns, unknown frequency and serious risks. Nits are recommended omissions, not silently discarded findings.
-- Require explicit item or batch decisions and serial feedback investigation. Session continuation waiver is separate from action approval. Keep wording history append-only with actual UTC times and exact decisive inputs; no private reasoning diary.
+- Require explicit item or batch decisions. The default decision table verifies the whole shortlist first with the same evidence standard. Step mode (serial, one by one) runs only on request or **Walk everything**. No Autopilot. Table workers are read-only, about 5 related items each with at most about 6 at once. A failed or evidence-free verdict goes to C. The main agent re-checks cited evidence before placing an item in A or B. No probe tests. Session continuation waiver is separate from action approval. Keep wording history append-only with actual UTC times and exact decisive inputs; no private reasoning diary.
 - Separate acceptance of wording, choice of review event and explicit publication authorization. Bind authority to exact PR/revision/payload; material change requires revalidation and renewed authorization.
 - No remote draft creation before authorization. Verify event, diff anchors and remote result; ambiguous attempts require reconciliation before retry. Logging failure blocks publication and never authorizes duplicate posting.
 - Preserve WIP, artifact identity, redaction and staged-artifact gates. Missing tools or source/persistence failures are explicit blockers, not permission to guess or bypass controls.
@@ -38,6 +38,8 @@ Outputs: full immutable `review.md`; append-only `feedback.md` with stable IDs, 
 13. Batched review uses exact authorized event/commit/body/comments. No own-PR failure fallback, arbitrary anchors, unrelated pending-review submission or blind retry.
 14. Closed PR, inaccessible context, failed worker/check, publication error, stale revision and logging failure have explicit stop/recovery paths.
 15. The shortlist covers every actionable item in the source review, not only Findings, using review-triage's item kinds and `covered by #M` rule. Challenges are drafted as questions to the author; gaps and unverified requirements default to Omit unless the author must act or answer; other observations default to Omit unless the PR touches that code. Omitting any item is an explicit logged decision.
+
+16. By default, the decision table mirrors review-triage's Table mode: buckets A Keep-sure / B Omit-sure / C your-call, one self-contained table question, reply commands (`go A B`, `walk`, `explain`, `keep`/`omit`/`reword` per item, `reopen`) logged as per-item decisions, unnamed items pending, C paged at 10 rows once it exceeds 15, and no continuation stops for walked items. The table never picks the event, creates a pending remote review or publishes; event choice, exact preview and publication authorization stay separate.
 
 ## Validation and limitations
 

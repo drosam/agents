@@ -52,7 +52,7 @@ flowchart TD
     end
 
     subgraph S4["4 Feedback"]
-        triage["review-triage (all incoming feedback)<br/>one item at a time"]
+        triage["review-triage (all incoming feedback)<br/>step / table / autopilot"]
         sources["Feedback sources<br/>code-review, simplify-code, qa-review,<br/>GitHub / GitLab / other PR/MR comments,<br/>human reviewers, pasted bug lists"]
         sources --> triage
         prr["pr-review (outgoing)<br/>publish only after exact preview approved"]
