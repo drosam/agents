@@ -45,7 +45,7 @@ flowchart TD
 
     subgraph S3["3 Verify"]
         review["code-review"]
-        workers["workers per round: behavior, blind,<br/>code-health, security, tests,<br/>simplicity, approach, spec"]
+        workers["workers per round: behavior, blind,<br/>code-health, security, tests,<br/>simplicity, approach, spec<br/>optional per-round models"]
         simplify["simplify-code<br/>propose, edit approved only"]
         qa["qa-review<br/>Playwright + Figma"]
         review --> workers
@@ -55,7 +55,7 @@ flowchart TD
         triage["review-triage (all incoming feedback)<br/>step / table / autopilot"]
         sources["Feedback sources<br/>code-review, simplify-code, qa-review,<br/>GitHub / GitLab / other PR/MR comments,<br/>human reviewers, pasted bug lists"]
         sources --> triage
-        prr["pr-review (outgoing)<br/>publish only after exact preview approved"]
+        prr["pr-review (outgoing)<br/>decision table, publish only<br/>after exact preview approved"]
     end
 
     subgraph S5["5 Ship"]
