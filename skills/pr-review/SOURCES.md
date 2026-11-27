@@ -1,5 +1,9 @@
 # PR Review Sources and Decisions
 
+## Fail-first omissions
+
+User decision: pr-review uses the same fail-first bar as review-triage (see review-triage/SOURCES.md "Fail-first value bar"). Harmless documented misuse and very rare harmless cases are recommended Omit (bucket B) unless they are security issues. When that judgment is uncertain, the item goes to the user (bucket C) rather than being omitted.
+
 ## Default decision table
 
 User decisions: pr-review should match review-triage's Table mode (see review-triage/SOURCES.md "Step / Table / Autopilot modes" for research and design), then "pr review should just show the table" with no Autopilot. Outgoing feedback is public wording the user owns, so automatic Keep/Omit is rejected. Mapping: Fix -> Keep, Skip -> Omit, Defer/Discuss -> Investigate. The table is the default with no mode question; Step mode remains available on request or through **Walk everything**. Self-contained `references/decision-table.md` instead of a cross-skill path.

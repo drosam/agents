@@ -21,10 +21,10 @@ Open by default after building the shortlist, unless the user asked for one by o
 | Bucket | Put an item here when | Recommendation |
 | --- | --- | --- |
 | **A - Keep, sure** | A verified introduced or worsened defect with real impact, a broken contract or substantial maintenance cost. The wording needs no further decision. Also a supported challenge or a gap the author must answer, drafted as a question | Keep |
-| **B - Omit, sure** | Taste or cleanup nits, feedback already in a thread, disproven claims, unrelated pre-existing problems, gaps and requirements the author need not act on, out-of-touch observations | Omit |
+| **B - Omit, sure** | Taste or cleanup nits, feedback already in a thread, disproven claims, unrelated pre-existing problems, gaps and requirements the author need not act on, out-of-touch observations, harmless misuse or very rare harmless cases under fail first (never security) | Omit |
 | **C - Your call** | Incomplete evidence, disputed reachability, unknown frequency on a serious claim, weight or tone questions (blocking or not), and anything needing Investigate | Item's own actions, recommendation first |
 
-When a choice between buckets is unclear, use C. An omission never resolves a serious risk; it still constrains the event recommendation.
+When a choice between buckets is unclear, or fail first may apply but harmlessness, documentation or reachability is uncertain, use C so the user checks. An omission never resolves a serious risk; it still constrains the event recommendation.
 
 ## 3. Present one table, ask once
 

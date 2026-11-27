@@ -169,8 +169,15 @@ Use that reference's reuse/contract, same-identity event and repair-closure case
 
 - `P0`: critical, demonstrated outage/data-loss/security impact requiring immediate action.
 - `P1`: serious correctness/security/reliability regression or broken migration/API; must fix before merge.
-- `P2`: actionable edge case, test gap, important rule violation or maintenance cost; state explicitly whether it blocks and why.
+- `P2`: realistic edge case, test gap, important rule violation or maintenance cost; state explicitly whether it blocks and why.
 - `P3`: optional polish only when requested; never a blocker based on taste.
+
+Apply fail first: report what real users can hit through normal use with real harm, not every possible case. These are not findings:
+
+- API misuse, or a strange combination that the docs, contract or UI already rule out, where the caller still gets an error (a wrong status or message is fine);
+- very rare, harmless cases: no lost or corrupted data, no partial write, no wrong money, no broken mandatory contract.
+
+List each one you are sure about in the Coverage `Fail-first skips` line with the accepted behavior and why it is harmless. Security always wins: authorization bypass, data exposure, injection, leaked internals or secrets, or resource exhaustion are findings however odd the trigger. When unsure whether a case is documented, harmless or reachable, report it as a normal finding with the open question, so the user decides.
 
 P0/P1 findings block. Unmet mandatory repo/spec requirements also block regardless of severity. Other P2 findings may be nonblocking only with a stated rationale and no unverified safety-critical assumption. Confidence follows the traced evidence; do not fabricate numeric probabilities.
 
@@ -253,6 +260,7 @@ Pre-existing or out-of-scope problems noticed during review. They do not change 
 - Repair closure: prior finding@revision -> affected surfaces/checks at new revision, remaining gaps and issue provenance; or n/a with reason.
 - Deployment: env/rev/source, or `n/a: reason`.
 - Validation: `cmd -> result` one line each; unrun: reason.
+- Fail-first skips: `path:line` - accepted behavior - why harmless, one per line; or none.
 - Gaps: missing checks + next action, or none.
 
 ## Verdict

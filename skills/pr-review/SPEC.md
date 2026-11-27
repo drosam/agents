@@ -29,7 +29,7 @@ Outputs: full immutable `review.md`; append-only `feedback.md` with stable IDs, 
 4. A 12-finding source can produce two selected comments without losing the other findings or their disposition history.
 5. Keep/Reword/Omit/Investigate controls outgoing feedback; none implies local edits, commits or publication. Suggestions are complete anchored replacements or concise directions.
 6. Comments use natural short sentences, normally 1-3, with necessary examples/details; no mandatory report labels, padded praise or repetition.
-7. UI, API and crafted-request reachability remain distinct; API-only serious defects are not discarded, and races are not called rare without evidence.
+7. UI, API and crafted-request reachability remain distinct; API-only serious defects are not discarded, and races are not called rare without evidence. Fail first: documented or contract-excluded API misuse where the caller still gets an error, and very rare harmless cases, are recommended Omit unless they are security issues; when that judgment is uncertain the item goes to the user (bucket C), never silently omitted.
 8. Recommendation and selected APPROVE/REQUEST_CHANGES/COMMENT remain separate from technical readiness. User chooses; unverified checks do not automatically become blockers or a clean approval.
 9. Exact full preview precedes explicit publication and is carried inside the authorization question itself, never only in narration or referenced as "above". "Looks good" and selecting APPROVE alone post nothing. Changed base/head/text/event/relevant discussion invalidates publication approval.
 10. Stable IDs and draft versions survive omissions, corrections, restarts and revision changes. Resume reconstructs state from complete source/log, not an index or summary.

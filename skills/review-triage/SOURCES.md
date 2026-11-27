@@ -4,6 +4,16 @@
 
 User-directed storage change: artifacts move from the repository's `.agent-work/` to `~/.agent-work/<repo-key>/`, shared by every worktree of the repository, because removing a worktree deleted its ignored artifacts and work was split across worktrees. `<repo-key>` comes from `git rev-parse --path-format=absolute --git-common-dir` (local, no remote required; bare `~/Developer/acme-shop` -> `acme-shop`); `<work-area>/.repo` guards key collisions. Rejected by the user: per-worktree symlinks, git-config keys and a prompt-injecting Pi extension. Canonical rule: `docs/work-artifacts.md`. Earlier `.agent-work/` paths below are historical.
 
+## Fail-first value bar
+
+User instruction: triage must avoid overengineering and overthinking, confirm an item can happen, and skip weird edge cases and real-but-strange cases that need API misuse, unless they are security issues. Ship good code with realistic edge cases; ignore harmless or very rare cases until they happen or users complain. User example: `POST /attachments` accepts a file or base64; sending both gives 500 instead of 422; documented, harmless, caller sees an error anyway -> skip.
+
+Behavior delta: section 3 adds the fail-first rule with a security override and a stop-when-decided investigation rule. "A cheap, low-risk correction can still be worthwhile for a rare case" is replaced, because a cheap fix alone no longer justifies fixing a harmless case. The attachments case is added to calibration. Table bucket B includes harmless misuse, so Autopilot auto-skips it. Unchanged: rarity still needs evidence (never inferred from a convoluted scenario); the misuse branch does not depend on rarity, only on documented exclusion plus harmlessness. Serious data, money or contract failures still need a fix whatever the frequency.
+
+Follow-up user decisions: apply the same bar in code-review (sure cases go to a Coverage `Fail-first skips` line, not Findings) and pr-review (recommended Omit); and "when in doubt, always defer to the user to check": uncertain fail-first judgments become Discuss/Defer or bucket C, never skip or omit. Skip lines are not triage items, but their count is shown at the mode question so the user can walk them.
+
+Desk cases (expected, not runtime): unsure whether the either/or rule is documented -> Discuss with that question, not skip; both file and base64 -> 500, documented -> skip; same 500 leaking a stack trace -> fix (security); undocumented combination the UI can send -> normal assessment; partial record written before the 500 -> not harmless, assess normally; crafted payload bypassing a tenant check -> fix regardless of oddness.
+
 ## Step / Table / Autopilot modes
 
 User report: walking 35-40 code-review points one at a time, with a decision, an implementation approval and a commit for each, was exhausting. Unrestricted batch fixing applied even very rare edge cases. User-approved design: the mode is picked at the start from a one-line per-kind count (unless already named). Table and Autopilot ship together, with Autopilot on the Moderate fix bar and commits per root cause. Table buckets are A fix-sure / B skip-sure / C your-call, with `walk`, `explain`, override and `reopen` commands; unnamed items stay pending; C pages at 10 rows once it exceeds 15.

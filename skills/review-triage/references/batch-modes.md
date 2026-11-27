@@ -34,10 +34,10 @@ A probe is a throwaway test that checks whether a claim really happens. It never
 | Bucket | Put an item here when | Recommendation |
 | --- | --- | --- |
 | **A - Fix, sure** | Confirmed defect or supported improvement. The smallest fix is clear, fits this branch's purpose and needs no further decision. Also a `gap`/`req` item with a permitted read-only check | Fix / Fix here / Adopt (small) / Run check |
-| **B - Skip, sure** | Verified not applicable or unreachable, already resolved, AI slop, or a verified rare edge with low impact under section 3. Never security/privacy, data loss, financial integrity or a mandatory contract | Skip / Keep current / Accept gap |
+| **B - Skip, sure** | Verified not applicable or unreachable, already resolved, AI slop, a verified rare edge with low impact, or harmless misuse under section 3's fail-first rule. Never security/privacy, data loss, financial integrity or a mandatory contract | Skip / Keep current / Accept gap |
 | **C - Your call** | Everything else: unverified claims or unknown frequency, tradeoffs, `C-*` challenges, spec/plan/docs edits, Ticket versus Fix here, review-induced churn, fixes that need broader work, and any Defer recommendation | Item's own actions, recommendation first |
 
-A confirmed serious defect goes in A even when its frequency is unknown. A serious claim that is still unverified goes in C. When a choice between buckets is unclear, use C.
+A confirmed serious defect goes in A even when its frequency is unknown. A serious claim that is still unverified goes in C. When a choice between buckets is unclear, or fail first may apply but harmlessness, documentation or reachability is uncertain, use C so the user checks.
 
 ## 3. Present one table, ask once
 
