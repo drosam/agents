@@ -76,7 +76,7 @@ Recency and deployment are evidence of use, not proof of correctness. Do not rec
 
 Before dispatch, read and follow `references/review-rounds.md`. It defines round selection, the preflight cost announcement, the four existing review dimensions, parallel dispatch, the per-round intent-blind, simplicity, approach and spec workers, failure recovery and the unique-claim ledger.
 
-Default full review: 2 independent rounds. Each round runs the 4 dimensions plus 1 intent-blind, 1 whole-change simplicity, 1 approach and, when a requirements source exists, 1 spec worker. Run spec mapping, documentation/history collection, checks and final verification once. An explicit valid round count from 1 through 3 overrides the default; a quick full-dimension or explicitly narrowed review defaults to 1. Quick full-dimension reviews retain every role; narrowed reviews omit blind, simplicity, approach and spec unless explicitly included. Invalid explicit counts require correction, not silent clamping. Print the selected rounds and worker count, then start without another confirmation.
+Default full review: 2 independent rounds. Each round runs the 4 dimensions plus 1 intent-blind, 1 whole-change simplicity, 1 approach and, when a requirements source exists, 1 spec worker. Run spec mapping, documentation/history collection, checks and final verification once. An explicit valid round count from 1 through 3 overrides the default; a quick full-dimension or explicitly narrowed review defaults to 1. Quick full-dimension reviews retain every role; narrowed reviews omit blind, simplicity, approach and spec unless explicitly included. Invalid explicit counts require correction, not silent clamping. With 2 or more rounds, choose round models per `references/review-rounds.md` before dispatch. Print the selected rounds, round models and worker count, then start without another confirmation.
 
 Deep correctness and structural scrutiny remain part of the same four dimensions, not extra dimensions. Repeated rounds are independent samples: workers receive identical pinned inputs but never earlier findings. Simplicity challenges whole-change scope, approach proposes better same-scope designs and spec questions the requirements themselves; none of them counts as round agreement. Agreement can guide confidence and tie-breaking only; it is not evidence and never changes severity. A failed required sample of any role remains unchecked and cannot become a clean result.
 
@@ -240,7 +240,7 @@ Pre-existing or out-of-scope problems noticed during review. They do not change 
 
 ## Coverage
 - Target: base..head, diff cmd, stability.
-- Rounds: N/N complete; behavior R1..RN | security R1..RN | tests R1..RN | rules/docs R1..RN | blind R1..RN | simplicity R1..RN | approach R1..RN | spec R1..RN or `n/a: no requirements source` - or `unchecked: reason`.
+- Rounds: N/N complete; models R1 <model>..RN <model> or `one model: <model>`; behavior R1..RN | security R1..RN | tests R1..RN | rules/docs R1..RN | blind R1..RN | simplicity R1..RN | approach R1..RN | spec R1..RN or `n/a: no requirements source` - or `unchecked: reason`.
 - Files: N in full diff + surrounding areas (groups, not file lists).
 - Requirements: `req (source) -> verified | violated | unverified (evidence)` one line each; inferred expectations labeled.
 - Docs/rules: sources checked; stale/conflicts/missing.

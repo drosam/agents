@@ -19,10 +19,21 @@ Each full round runs these roles:
 
 A quick full-dimension review keeps every role. An explicitly narrowed review runs only the applicable dimensions and excludes blind, simplicity, approach and spec unless the user explicitly includes them.
 
+### Round models
+
+Different models miss different issues, so later rounds may use another model. This applies only when the count is 2 or more and the runtime lets the coordinator choose a model per worker.
+
+- If the request already assigns models (for example `R2 on <model>`), use them without asking.
+- Otherwise ask one single-select question before dispatch. Options: **Same model for all rounds** (the current model) and **Different model for later rounds**. A custom answer names the model per round, for example `R2: <model>`.
+- If the runtime cannot choose a model per worker, do not ask. Run every round on the current model and record `round models: unsupported - one model`.
+- Every worker in a round uses that round's model, including blind, simplicity, approach and spec. The coordinator's single-run work (spec mapping, docs/history, checks, claim verification and synthesis) stays on the current model.
+- Log the choice with the run, and print it in the preflight below.
+
 Before dispatch, print the selected count and cost. For a full review use this shape:
 
 ```text
 Review rounds: <N>
+Round models: R1 <model> | R2 <model> | ... (or: one model: <model>)
 Discovery workers: <8N with spec | 7N without>
 - <N> x 4 review dimensions
 - <N> x intent-blind
@@ -47,7 +58,7 @@ Use these four dimensions in every full round:
 | Tests/reliability/performance | `code-review-tests` | Behavioral test validity, failure handling, concurrency, resource limits and operational evidence |
 | Rules/docs/patterns/code health | `code-review-code-health` | Scoped rules, best practices, doc consistency, recent precedents, ownership, invariants and structural simplification |
 
-Tag every task with its round and role, for example `R1 behavior`, `R2 security`, `R1 blind`, `R2 approach`. General workers receive the complete analytical rubric, not only the role name. Specialized workers cover their entire row. Pass the resolved skill path and relevant contract/rubric text, but state that shared validation execution remains coordinator-owned. Sampled workers inspect test code and CI evidence and propose discriminating checks; they do not run repository test/lint/typecheck/build commands or browser flows during discovery. Workers never spawn nested workers.
+Tag every task with its round and role, for example `R1 behavior`, `R2 security`, `R1 blind`, `R2 approach`. When rounds use different models, the tag also names the model, for example `R2 behavior [<model>]`. General workers receive the complete analytical rubric, not only the role name. Specialized workers cover their entire row. Pass the resolved skill path and relevant contract/rubric text, but state that shared validation execution remains coordinator-owned. Sampled workers inspect test code and CI evidence and propose discriminating checks; they do not run repository test/lint/typecheck/build commands or browser flows during discovery. Workers never spawn nested workers.
 
 Include the added checks in their existing dimension packets without omitting any current focus: code health returns canonical reuse candidates, semantic differences and producer/consumer contract traces; behavior and tests return relevant same-identity repeat-action and pending/settled scenarios with discriminating assertions. A bare `consistent`/`checked` label is not that evidence. Use explicit inapplicability or an exact source/access gap when needed. These are deeper checks in the same four dimensions, not extra workers.
 
@@ -104,7 +115,7 @@ Route each verified concern by its class:
 
 ## 7. Handle failures without bias
 
-A denied or failed sampled worker gets one permitted sequential fallback using the same round/role packet. A missing dimension specialist falls back to `general`. A failed simplicity, approach or spec worker gets one `general` fallback with its focused packet. Do not use `general` for the blind role, retry through broader permissions or tell another sample what the failed worker found.
+A denied or failed sampled worker gets one permitted sequential fallback using the same round/role packet and the same round model. If workers fail because that round's model is unavailable (no access, unknown model or provider error), do not retry it. Ask whether to rerun that round on the current model or mark it unchecked. Never fall back to another model silently; record any switch in the round-models line. A missing dimension specialist falls back to `general`. A failed simplicity, approach or spec worker gets one `general` fallback with its focused packet. Do not use `general` for the blind role, retry through broader permissions or tell another sample what the failed worker found.
 
 If fallback cannot complete, mark that round/role coverage `unchecked` with the reason and next action. A failed sample is not a clean vote and cannot disappear because another round completed. Required unchecked coverage for any applicable role prevents `READY` unless the user explicitly narrowed it out before dispatch.
 
@@ -114,7 +125,7 @@ After every worker returns:
 
 1. Record each candidate with source tags such as `R1 behavior`, `R2 code health`, `R1 blind`, `R2 simplicity`, `R1 approach` or `R2 spec`.
 2. Merge only findings with the same trigger, failed behavior, root cause and remedy. Preserve distinct failures at the same location. Merge challenges only when they propose the same alternative or question the same requirement for the same reason.
-3. Record support by distinct round: `found by 1/2 rounds` or `found by 2/2 rounds`. Multiple intent-aware dimensions in one round still count as one supporting round. Record blind support separately as `blind x/N` and challenge recurrence as `raised by x/N rounds`; neither counts as round agreement.
+3. Record support by distinct round: `found by 1/2 rounds` or `found by 2/2 rounds`. Multiple intent-aware dimensions in one round still count as one supporting round. When rounds used different models, name the models that found it, for example `found by 2/2 rounds (2 models)`; model diversity is attribution only, like agreement. Record blind support separately as `blind x/N` and challenge recurrence as `raised by x/N rounds`; neither counts as round agreement.
 4. Treat agreement only as a confidence/tie-breaking signal. It is not evidence, does not establish correctness and never raises severity or promotes a challenge.
 5. Validate every unique candidate once through the normal synthesis procedure: inspect the full path, strongest counterevidence, requirements and safe checks. Drop disproven candidates and unsupported challenges; retain consequential uncertainty as a gap.
 6. Preserve every supported actionable finding and every supported challenge. No vote threshold and no top-N cap across rounds.
